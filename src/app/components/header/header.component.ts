@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { Cart, CartItem } from 'src/app/models/cart.model';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -23,13 +25,24 @@ export class HeaderComponent {
       .reduce((prev, curent) => prev + curent, 0);
   }
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService,private router:Router) {}
 
   getTotal(items: CartItem[]): number {
     return this.cartService.getTotal(items);
   }
 
+  connexion(){
+    this.router.navigate(['/client/login'])
+  }
   onClearCart(): void {
     this.cartService.clearCart();
+  }
+  hide=false
+  verif(){
+    if((localStorage.getItem('email')!=null)&&(localStorage.getItem('pass')!=null))
+      this.hide=true
+  }
+  goToClientServices(){
+    this.router.navigate(['/client/services'])
   }
 }

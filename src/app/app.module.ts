@@ -9,13 +9,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatTableModule } from '@angular/material/table';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatInputModule} from '@angular/material/input';
@@ -30,6 +29,39 @@ import { StoreService } from './services/store.service';
 import { Header2Component } from './header2/header2.component';
 import { MainComponent } from './main/main.component';
 import { FooterComponent } from './footer/footer.component';
+import { CheckOutComponent } from './pages/check-out/check-out.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatStepperModule} from '@angular/material/stepper';
+import { PartieClientComponent } from './Pages/partie-client/partie-client.component';
+import { PartieAdminComponent } from './pages/partie-admin/partie-admin.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { CommonModule } from '@angular/common'
+import { ProductsComponent } from './pages/partie-admin/products/products.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatCardModule} from '@angular/material/card';
+import { ProductComponent } from './pages/home/components/product/product.component';
+import { LoginComponent } from './pages/home/login/login.component';
+import { ServiceClientComponent } from './pages/partie-client/service-client/service-client.component';
+import { AccountComponent } from './pages/partie-client/service-client/account/account.component';
+import { FactureComponent } from './pages/partie-client/service-client/facture/facture.component';
+import { CommandesComponent } from './pages/partie-client/service-client/commandes/commandes.component';
+import { TrackOrderComponent } from './pages/partie-client/service-client/track-order/track-order.component';
+import { OrdersComponent } from './pages/partie-admin/orders/orders.component';
+import { AnalyticsComponent } from './pages/partie-admin/analytics/analytics.component';
+import { DashboardComponent } from './pages/partie-admin/dashboard/dashboard.component';
+import { TopWidgetComponent } from './pages/partie-admin/dashboard/top-widget/top-widget.component';
+import { SalesByMonthComponent } from './pages/partie-admin/dashboard/sales-by-month/sales-by-month.component';
+import { SalesByCategorieComponent } from './pages/partie-admin/dashboard/sales-by-categorie/sales-by-categorie.component';
+import { LastFewTransactionsComponent } from './pages/partie-admin/dashboard/last-few-transactions/last-few-transactions.component';
+import { TopThreeProductsComponent } from './pages/partie-admin/dashboard/top-three-products/top-three-products.component';
+
+
+
+
+
+
+
 
 
 @NgModule({
@@ -44,7 +76,27 @@ import { FooterComponent } from './footer/footer.component';
     Header2Component,
     MainComponent,
     FooterComponent,
-  
+    CheckOutComponent,
+    PartieClientComponent,
+    PartieAdminComponent,
+    ProductsComponent,
+    ProductComponent,
+    LoginComponent,
+    ServiceClientComponent,
+    AccountComponent,
+    FactureComponent,
+    CommandesComponent,
+    TrackOrderComponent,
+    OrdersComponent,
+    AnalyticsComponent,
+    DashboardComponent,
+    TopWidgetComponent,
+    SalesByMonthComponent,
+    SalesByCategorieComponent,
+    LastFewTransactionsComponent,
+    TopThreeProductsComponent
+
+
   ],
   imports: [
     BrowserModule,
@@ -64,7 +116,16 @@ import { FooterComponent } from './footer/footer.component';
     MatSnackBarModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule,
+    MatStepperModule,
+    MatCardModule,
+    MatFormFieldModule,
+    CommonModule,
+    MatTableModule,
+    NgxPayPalModule,
+    MatDialogModule,
+    MatCardModule
   ],
   providers: [CartService, StoreService],
   bootstrap: [AppComponent],

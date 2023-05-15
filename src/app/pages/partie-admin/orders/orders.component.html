@@ -1,0 +1,57 @@
+<!-- table.component.html -->
+
+<table class="table my-table">
+    <thead>
+        <tr>
+
+            <th>
+                Id Commande
+                <input #ref type="text" class="form-control" />
+            </th>
+            <th>
+                Status
+                <select class="form-select">
+                <option >Order in Progress</option>
+                <option>Order Still Shipping</option>
+                <option >Order fulfilled</option>
+            </select>
+            </th>
+
+
+
+        </tr>
+    </thead>
+    <thead>
+        <tr>
+            <th>Commande</th>
+            <th>Date</th>
+            <th>totaleCommande</th>
+            <th>Paiement</th>
+            <th>Status</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let i of Commande">
+
+            <td>{{i.id}}</td>
+            <td>{{i.dateCommande | date:"dd/MM/yyyy" }}</td>
+            <td>{{i.totalCommande}}</td>
+            <td>{{i.moyenPaiement}}</td>
+            <td>
+                <select class="form-select">
+              <option >Order in Progress</option>
+              <option >Order Still Shipping</option>
+              <option >Order fulfilled</option>
+            </select>
+            </td>
+            <td>
+                <button class="btn btn-secondary" (click)="openInfo()"><mat-icon>info</mat-icon></button>
+                <ng-template #infoCommande>
+                    <h2 style="text-align:center">Info Commande</h2>
+
+                </ng-template>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,147 @@
+<!-- table.component.html -->
+
+<table class="my-table">
+    <thead>
+        <tr>
+
+            <th>
+                Ref Product
+                <input #ref type="text" class="form-control" (keyup)="filterRef(ref.value)" />
+            </th>
+            <th>
+                Status
+                <select class="form-select">
+                  <option >Active</option>
+                  <option>Out of stock</option>
+                  <option >disabled</option>
+              </select>
+            </th>
+            <th>
+                Categorie
+                <select class="form-select">
+                  <option *ngFor="let j of Categorie" value="j.id" >{{j.refCateg}}</option>
+
+              </select>
+
+            </th>
+
+            <th>
+                <button class="btn btn-success" mat-button (click)="openAddProductDialog()">Add Product</button>
+                <ng-template #productDialog>
+                    <div style="float:right" (click)="closeDialog()">
+                        <mat-icon>close</mat-icon>
+                    </div><br/>
+                    <h2 style="text-align:center">Add Product</h2>
+                    <form [formGroup]="produit">
+                        <mat-form-field>
+                            <label>Reférence Produit</label>
+                            <input class="form-control" formControlName="refer">
+
+                        </mat-form-field><br/>&nbsp;&nbsp;
+                        <button (click)="refrech()"><mat-icon>refresh</mat-icon></button><br/>
+                        <mat-form-field>
+                            <label>Nom Produit</label>
+                            <input formControlName="nom" class="form-control">
+                        </mat-form-field><br/>
+                        <mat-form-field>
+                            <label>Categorie</label>
+                            <select class="form-select" formControlName="categ">
+                              <option   *ngFor="let m of Categorie" [value]=m.id >{{m.refCateg}}</option>
+                            </select>
+                        </mat-form-field>&nbsp;&nbsp;
+                        <mat-form-field>
+                            <label>image</label>
+                            <input formControlName="img" class="form-control">
+                        </mat-form-field><br/>
+                        <mat-form-field>
+                            <label>Description</label>
+                            <textarea formControlName="desc" class="form-control"></textarea>
+                        </mat-form-field><br/>
+                        <mat-form-field>
+                            <label>Prix Ancient</label>
+                            <input formControlName="prixancient" class="form-control" />
+                        </mat-form-field>&nbsp;&nbsp;
+                        <mat-form-field>
+                            <label>Prix</label>
+                            <input formControlName="prix" class="form-control">
+                        </mat-form-field><br/>
+                        <button mat-raised-button style="margin-left:40%" (click)="addProduct()">Add</button>
+                    </form>
+                </ng-template>
+
+            </th>
+        </tr>
+    </thead>
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Status</th>
+            <th>Categorie</th>
+            <th>Action</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of Produit">
+            <td><img [src]="transform(row.image)" style="width:100px;height: 100px;float:left">&nbsp;&nbsp; {{row.nomProd}}</td>
+            <td><select class="form-select">
+                <option >Active</option>
+                <option>Out of stock</option>
+                <option >disabled</option>
+            </select></td>
+            <td>{{row.idCateg}}</td>
+            <td>
+                <button class="btn btn-secondary" (click)="openEditProductDialog(row.id)"><mat-icon>edit</mat-icon></button>
+                <ng-template #editproductDialog>
+                    <div style="float:right" (click)="closeDialog()">
+                        <mat-icon>close</mat-icon>
+                    </div><br/>
+                    <h2 style="text-align:center">Edit Product</h2>
+                    <form [formGroup]="produit">
+                        <mat-form-field>
+                            <label>Reférence Produit</label>
+                            <input class="form-control" formControlName="refer">
+
+                        </mat-form-field>&nbsp;&nbsp;
+
+                        <mat-form-field>
+                            <label>Nom Produit</label>
+                            <input formControlName="nom" class="form-control">
+                        </mat-form-field><br/>
+                        <mat-form-field>
+                            <label>Categorie</label>
+                            <select class="form-select" formControlName="categ">
+                              <option   *ngFor="let m of Categorie" [value]=m.id >{{m.refCateg}}</option>
+                            </select>
+                        </mat-form-field>&nbsp;&nbsp;
+                        <mat-form-field>
+                            <label>image</label>
+                            <input formControlName="img" class="form-control">
+                        </mat-form-field><br/>
+                        <mat-form-field>
+                            <label>Description</label>
+                            <textarea formControlName="desc" class="form-control"></textarea>
+                        </mat-form-field><br/>
+                        <mat-form-field>
+                            <label>Prix Ancient</label>
+                            <input formControlName="prixancient" class="form-control" />
+                        </mat-form-field>&nbsp;&nbsp;
+                        <mat-form-field>
+                            <label>Prix</label>
+                            <input formControlName="prix" class="form-control">
+                        </mat-form-field><br/>
+                        <button mat-raised-button style="margin-left:40%" (click)="editProduct(row.id)">Edit</button>
+                    </form>
+                </ng-template>
+                &nbsp;
+                <button class="btn btn-danger" (click)="openDeleteProductDialog()"><mat-icon>delete</mat-icon></button>
+                <ng-template #deleteproduct>
+                    <h2 style="text-align:center">Are you Sure you want to delete this product</h2>
+                    <button class="btn btn-danger" style="margin-left:35%" (click)="deleteProduit(row.id)">YES</button>&nbsp;&nbsp;
+                    <button class="btn btn-secondary" (click)="closeDialog()">NO</button>
+                </ng-template>
+            </td>
+        </tr>
+
+    </tbody>
+</table>

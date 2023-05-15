@@ -12,16 +12,24 @@ export class CartService {
   constructor(private _snackBar: MatSnackBar) {}
 
   addToCart(item: CartItem): void {
-    const items = [...this.cart.value.items];
 
-    const itemInCart = items.find((_item) => _item.id === item.id);
+    const items = JSON.parse(localStorage.getItem('cart')!);
+
+    const itemInCart = items.find((_item: { id: number; }) => _item.id === item.id);
     if (itemInCart) {
       itemInCart.quantity += 1;
+
+      localStorage.setItem('cart', JSON.stringify(items));
+
+
     } else {
       items.push(item);
+      localStorage.setItem('cart', JSON.stringify(items));
+
     }
 
-    this.cart.next({ items });
+
+    this.cart.next({items});
     this._snackBar.open('1 item added to cart.', 'Ok', { duration: 3000 });
   }
 
@@ -32,6 +40,8 @@ export class CartService {
 
     if (updateCart) {
       this.cart.next({ items: filteredItems });
+      localStorage.removeItem('cart')
+      localStorage.setItem('cart', JSON.stringify(filteredItems));
       this._snackBar.open('1 item removed from cart.', 'Ok', {
         duration: 3000,
       });

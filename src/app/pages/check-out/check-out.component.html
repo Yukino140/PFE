@@ -1,0 +1,74 @@
+<!-- checkout.component.html -->
+
+<div class="checkout-container">
+    <mat-stepper linear #stepper>
+        <!-- Step 1: Shipping Information -->
+        <mat-step [stepControl]="shippingForm">
+            <ng-template matStepLabel>Shipping Information</ng-template>
+            <form [formGroup]="shippingForm" class="form-container">
+                <!-- Shipping details form fields go here -->
+                <mat-form-field appearance="fill" class="form-field">
+                    <mat-label>Full Name</mat-label>
+                    <input matInput formControlName="fullName" required>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="form-field">
+                    <mat-label>Address</mat-label>
+                    <input matInput formControlName="address" required>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="form-field">
+                    <mat-label>City</mat-label>
+                    <input matInput formControlName="city" required>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="form-field">
+                    <mat-label>Postal Code</mat-label>
+                    <input matInput formControlName="postalCode" required>
+                </mat-form-field>
+                <!-- Next button to move to next step -->
+                <div class="button-container">
+                    <button mat-button color="primary" (click)="stepper.next()">Next</button>
+                </div>
+            </form>
+        </mat-step>
+
+        <!-- Step 2: Payment Information -->
+        <mat-step [stepControl]="paymentForm">
+            <ng-template matStepLabel>Payment Information</ng-template>
+            <form [formGroup]="paymentForm" class="form-container">
+
+                <!-- <mat-form-field appearance="fill" class="form-field">
+                    <mat-label>Card Number</mat-label>
+                    <input matInput formControlName="cardNumber" required>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="form-field">
+                    <mat-label>Card Holder Name</mat-label>
+                    <input matInput formControlName="cardHolderName" required>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="form-field">
+                    <mat-label>Expiry Date</mat-label>
+                    <input matInput formControlName="expiryDate" required>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="form-field">
+                    <mat-label>CVV</mat-label>
+                    <input matInput formControlName="cvv" required>
+                </mat-form-field>
+
+                <div class="button-container">
+                    <button mat-button color="primary" (click)="stepper.previous()">Previous</button>
+                    <button mat-button color="accent" (click)="submitForm()">Submit</button>
+                </div> -->
+                <button (click)="makePayement()"><img src="../../../assets/Credit.jpeg"  style="width:300px;margin-left:225px;"/></button>
+                <button><img src="../../../assets/PayPal.png" style="width:300px;margin-left:225px;height:40px;"/></button>
+                <button (click)="payCrypto()"><img src="../../../assets/crypto.png" style="width:300px;margin-left:225px;height:40px;"/></button>
+                <!--  <ngx-paypal [config]="payPalConfig"></ngx-paypal>-->
+
+            </form>
+            <button class="btn btn-primary" (click)="newCommande('card')">Finsissez Votre Commande</button>
+        </mat-step>
+    </mat-stepper>
+
+    <!-- Success message -->
+    <div class="success-container" *ngIf="isSubmitted">
+        <h2>Success!</h2>
+        <p>Your order has been placed successfully.</p>
+    </div>
+</div>

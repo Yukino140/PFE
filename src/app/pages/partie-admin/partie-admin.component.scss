@@ -1,0 +1,40 @@
+/* dashboard.component.css */
+
+.sidenav-container {
+    height: 100%;
+}
+
+.sidenav {
+    width: 240px;
+    background-color: #f8f9fa;
+}
+
+.sidenav .mat-list-item {
+    cursor: pointer;
+}
+
+.sidenav .mat-list-item.active {
+    background-color: #dee2e6;
+}
+
+.sidenav-content {
+    padding: 24px;
+}
+
+
+/* dashboard-header.component.css */
+
+.mat-toolbar {
+    height: 64px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 16px;
+    margin-right: 16px;
+}

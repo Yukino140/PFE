@@ -1,1 +1,60 @@
-<p>{{id}}</p>
+<section class="padding-y">
+    <div class="container">
+
+        <div class="row">
+            <aside class="col-lg-6">
+                <article class="gallery-wrap">
+                    <div class="img-big-wrap img-thumbnail">
+                        <a data-fslightbox="mygalley" data-type="image" href="assets/images/items/10.webp">
+                            <img height="560" [src]="product?.image">
+                        </a>
+                    </div>
+                    <!-- img-big-wrap.// -->
+                    <div class="thumbs-wrap">
+
+                    </div>
+                    <!-- thumbs-wrap.// -->
+                </article>
+                <!-- gallery-wrap .end// -->
+            </aside>
+            <main class="col-lg-6">
+                <article class="ps-lg-3">
+                    <!--  <h2>{{categorie?.refCateg}}</h2><br/>-->
+                    <h1 class="title text-dark"><br>{{p.nomProd}} </h1><br/>
+                    <h5>[{{p.refprod}}]</h5>
+                    <!-- rating-wrap.// -->
+
+                    <div class="mb-3">
+                        <var class="price h5">{{p.prix}}DT</var>
+                        <span class="text-muted">/{{p.prixAncient}}</span>
+                    </div>
+
+                    <p>{{product?.description}}</p>
+
+
+
+                    <hr>
+
+
+                    <!-- col.// -->
+
+                    <!-- input-group.// -->
+
+                    <!-- col.// -->
+
+                    <!-- row.// -->
+
+
+                    <a class="btn  btn-primary"> <i class="me-1 fa fa-shopping-basket"></i> Add to cart </a>
+
+
+                </article>
+                <!-- product-info-aside .// -->
+            </main>
+            <!-- col.// -->
+        </div>
+        <!-- row.// -->
+
+    </div>
+    <!-- container .//  -->
+</section>

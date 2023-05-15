@@ -1,0 +1,21 @@
+// checkout.component.scss
+.checkout-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+
+.form-container {
+    display: grid;
+    gap: 20px;
+}
+
+.form-field {
+    width: 100%;
+}
+
+.button-container {
+    display: flex;
+}

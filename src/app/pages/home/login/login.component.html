@@ -1,0 +1,42 @@
+<!-- login.component.html -->
+<div class="container-fluid login-container" id="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-4">
+            <mat-card class="login-card" style="margin-left:30%">
+                <mat-card-header>
+                    <mat-card-title class="login-title">Login</mat-card-title>
+                </mat-card-header>
+                <form class="login-form" [formGroup]="login">
+                    <mat-form-field class="form-field">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="email" placeholder="Enter your email" formControlName="email">
+                    </mat-form-field><br/>
+                    <mat-form-field class="form-field">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" placeholder="Enter your password" formControlName="pass">
+                    </mat-form-field><br/>
+                    <button mat-raised-button color="primary" class="login-button" (click)="Login()">Log In</button>
+                </form>
+            </mat-card>
+
+        </div>
+        <div class="col-md-4">
+            <mat-card class="login-card" style="margin-left:10%">
+                <mat-card-header>
+                    <mat-card-title class="login-title">Creation d'un Compte</mat-card-title>
+                </mat-card-header>
+                <form class="login-form" [formGroup]="signup">
+                    <mat-form-field class="form-field">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="email" placeholder="Enter your email" formControlName="emailC">
+                    </mat-form-field><br/>
+                    <mat-form-field class="form-field">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" placeholder="Enter your password" formControlName="passC  ">
+                    </mat-form-field><br/>
+                    <button mat-raised-button color="primary" class="login-button">Sign Up</button>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+</div>

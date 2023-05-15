@@ -1,0 +1,23 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { PartieAdminComponent } from './partie-admin.component';
+
+describe('PartieAdminComponent', () => {
+  let component: PartieAdminComponent;
+  let fixture: ComponentFixture<PartieAdminComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ PartieAdminComponent ]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(PartieAdminComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
