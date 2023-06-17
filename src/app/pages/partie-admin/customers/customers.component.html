@@ -1,1 +1,87 @@
-<p>customers works!</p>
+<!-- table.component.html -->
+
+<table class="table my-table">
+    <thead>
+        <tr>
+
+            <th>
+                Recherche
+                <input type="text" [(ngModel)]="searchTerm" class="form-control" (input)="filterData()" />
+            </th>
+
+
+
+
+        </tr>
+    </thead>
+    <thead>
+        <tr>
+            <th>Id Client</th>
+            <th>username</th>
+            <th>email</th>
+            <th>Nom</th>
+            <th>telephone</th>
+            <th>Adresse</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let i of Client" [ngClass]="{'bg bg-danger':i.password==null}">
+            <ng-container *ngIf="i.role=='Client'">
+
+                <td>{{i.id}}</td>
+                <td>{{i.username}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.nom}}</td>
+                <td>{{i.telephone}}</td>
+                <td>{{i.adresse}}</td>
+
+
+                <td>
+                    <button class="btn btn-secondary" (click)="open(i.id)"><mat-icon>info</mat-icon></button>
+                    <ng-template #infoClient>
+                        <h2 style="text-align:center">Info Client</h2>
+                        <table class="table my-table">
+                            <thead>
+                                <tr>
+                                    <th>Nom </th>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Telephone</th>
+                                    <th>Adresse</th>
+                                    <th>Matricule Fiscale</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <td>{{k.nom}}</td>
+                                <td>{{k.username}}</td>
+                                <td>{{k.email}}</td>
+                                <td>{{k.telephone}}</td>
+                                <td>{{k.adresse}}</td>
+                                <td>{{k.matFiscale}}</td>
+                            </tbody>
+                        </table>
+                        <button class="btn btn-success" (click)="generate(k.id)" *ngIf="k.password==null">Accepter Compte</button>
+                        <button class="btn btn-success" (click)="makeadmin(k.id)">Make Admin</button>
+
+                        <!--<ng-template #passwordgenerate>
+                        <div>
+                            <form [formGroup]="newPass">
+                                <mat-form-field>
+                                    <label>Reférence Produit</label>
+                                    <input class="form-control" formControlName="pass">
+
+                                </mat-form-field><br/>&nbsp;&nbsp;
+                                <button (click)="refrech()"><mat-icon>refresh</mat-icon></button><br/>
+                                <button class="btn btn-primary" (click)="send(i.id)">Genérer</button>
+                            </form>
+                        </div>
+                    </ng-template>-->
+                    </ng-template>
+                </td>
+            </ng-container>
+        </tr>
+    </tbody>
+</table>

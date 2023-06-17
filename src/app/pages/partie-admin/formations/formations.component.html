@@ -1,0 +1,102 @@
+<!-- table.component.html -->
+
+<table class="table my-table">
+    <thead>
+        <tr>
+
+            <th>
+                Recherche
+                <input #ref type="text" class="form-control" />
+            </th>
+            <th>
+                <button class="btn btn-success" mat-button (click)="openadddialog()">Add Formation</button>
+                <ng-template #formationDialog>
+                    <div style="float:right" (click)="closeDialog()">
+                        <mat-icon>close</mat-icon>
+                    </div><br/>
+                    <h2 style="text-align:center">Add Formation</h2>
+                    <form [formGroup]="formation">
+
+                        <mat-form-field>
+                            <label>Titre</label>
+                            <input formControlName="titre" class="form-control">
+                        </mat-form-field><br/>
+
+
+                        <mat-form-field>
+                            <label>nbplace</label>
+                            <input formControlName="nbplace" class="form-control">
+                        </mat-form-field><br/>
+                        <mat-form-field>
+                            <label>Description</label>
+                            <textarea formControlName="desc" class="form-control"></textarea>
+                        </mat-form-field><br/>
+                        <mat-form-field>
+                            <label>date</label>
+                            <input type="date" formControlName="date" class="form-control" />
+                        </mat-form-field>&nbsp;&nbsp;
+                        <mat-form-field>
+                            <label>Prix</label>
+                            <input formControlName="prix" class="form-control">
+                        </mat-form-field><br/>
+                        <button mat-raised-button style="margin-left:40%" (click)="addFormation()">Add</button>
+                    </form>
+                </ng-template>
+
+            </th>
+
+
+
+        </tr>
+    </thead>
+    <thead>
+        <tr>
+            <th>Titre</th>
+            <th>description</th>
+            <th>nombre des places</th>
+            <th>date</th>
+            <th>prix</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let i of Events">
+            <td>{{i.title}}</td>
+            <td>{{i.description}}</td>
+            <td>{{i.nbplace}}</td>
+            <td>{{i.date| date:"dd/MM/yyyy"}}</td>
+            <td>{{i.prix}}</td>
+
+            <td>
+                <button class="btn btn-secondary" (click)="openListe(i.id)"><mat-icon>info</mat-icon></button>
+                <ng-template #ListeParticipant>
+                    <h2 style="text-align:center">Liste Participant</h2>
+                    <table class="table my-table">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Prenom</th>
+                                <th>societe</th>
+                                <th>email</th>
+                                <th>telephone</th>
+
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let i of e[0].liste">
+                                <td>{{i.nom}}</td>
+                                <td>{{i.prenom}}</td>
+                                <td>{{i.societe}}</td>
+                                <td>{{i.email}}</td>
+                                <td>{{i.telephone}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </ng-template>
+            </td>
+        </tr>
+    </tbody>
+</table>

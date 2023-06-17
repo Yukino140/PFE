@@ -17,5 +17,4 @@ export class PartieClientComponent implements OnInit {
       this.cart = _cart;
     });
   }
-
 }

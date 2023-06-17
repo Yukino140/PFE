@@ -29,6 +29,8 @@ export class CartComponent implements OnInit, OnDestroy {
    this.cartSubscription = this.cartService.cart.subscribe((_cart: Cart) => {
       this.cart = _cart;
       this.dataSource = _cart.items;
+      console.log(this.dataSource);
+      console.log(this.cart)
     });
 
   }
@@ -56,16 +58,6 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   onCheckout(): void {
-   /* this.http
-      .post('http://localhost:4242/checkout', {
-        items: this.cart.items,
-      })
-      .subscribe(async (res: any) => {
-        let stripe = await loadStripe('your token');
-        stripe?.redirectToCheckout({
-          sessionId: res.id,
-        });
-      });*/
       this.router.navigate(['client/checkout',this.t])
   }
 

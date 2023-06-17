@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product.model';
 import { Produit } from 'src/app/models/produit';
@@ -12,7 +13,7 @@ import { StoreService } from 'src/app/services/store.service';
 export class ProductComponent implements OnInit {
   id :number=1;
   product?:Product;
-  constructor(private activatedRoute:ActivatedRoute,private store:StoreService) { }
+  constructor(private activatedRoute:ActivatedRoute,private store:StoreService,private sanitizer:DomSanitizer) { }
   p!:Produit
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params['id'];
@@ -21,6 +22,10 @@ export class ProductComponent implements OnInit {
     })
 
   }
+  transform(url:any) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+
+     }
 
   }
 

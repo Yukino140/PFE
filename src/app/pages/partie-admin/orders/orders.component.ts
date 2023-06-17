@@ -1,5 +1,8 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { find } from 'highcharts';
+import { Produit } from 'src/app/models/produit';
+
 import { StoreService } from 'src/app/services/store.service';
 
 @Component({
@@ -18,9 +21,28 @@ export class OrdersComponent implements OnInit {
       this.Commande = response
     })
   }
-  openInfo(){
+  openInfo(id:number){
     this.dialog.open(this.infoCommande);
+    this.info(id)
+  }
+  LigneCommande:any=[]
+  info(id:number){
+    this.link.getLigneCommandeByid(id).subscribe((data)=>{
 
+
+
+      this.LigneCommande = data;
+      this.LigneCommande.forEach((commande: { idprod: any; prod: Produit; })=>{
+        let foreignKey = commande.idprod
+        this.link.getProduitById(foreignKey).subscribe((data)=>{
+          commande.prod = data;
+        })
+      })
+
+
+      console.log(this.LigneCommande)
+
+    })
   }
 
   constructor(private link:StoreService,private dialog:MatDialog) { }
@@ -28,6 +50,9 @@ export class OrdersComponent implements OnInit {
   ngOnInit(): void {
     this.getAllCommande()
   }
+
+
+
 
 
 

@@ -16,4 +16,5 @@ export class AppComponent implements OnInit {
       this.cart = _cart;
     });
   }
+
 }

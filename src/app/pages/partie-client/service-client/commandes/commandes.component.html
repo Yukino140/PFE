@@ -39,13 +39,98 @@
     </thead>
     <tbody>
         <tr *ngFor="let i of Commande">
-            <ng-container [ngClass]="{'bg-success.bg-gradient':i.paiementValide==true,'bg-danger.bg-gradient':i.paiementValide==false}">
+            <ng-container>
                 <td>{{i.id}}</td>
-                <td>{{i.dateCommande | date:"dd/MM/yyyy"}}</td>
+                <td>{{i.createdAt | date:"dd/MM/yyyy"}}</td>
                 <td>{{i.moyenPaiement}}</td>
                 <td>{{i.totalCommande}}</td>
+                <td>
+                    <button class="btn btn-secondary" (click)="openInfo(i.id)"><mat-icon>info</mat-icon></button>
+                    <ng-template #infoCommande>
+                        <h2 style="text-align:center">Info Commande</h2>
+                        <table class="table my-table">
+                            <thead>
+                                <tr>
+                                    <th>Nom Produit</th>
+                                    <th>ref Produit</th>
+                                    <th>quantité</th>
+                                    <th>prix</th>
+                                    <th>Retour</th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of LigneCommande">
+                                    <td>{{item.prod.nomProd}}</td>
+                                    <td>{{item.prod.refprod}}</td>
+                                    <td>{{item.qte}}</td>
+                                    <td>{{total(item.prod.prix,item.qte)}} TND</td>
+
+                                    <td>
+                                        <button class="btn btn-danger" (click)="liste(item.id)" style="margin-right:5px;">Liste des Retours</button>
+                                        <ng-template #listeretour>
+                                            <h2 style="text-align:center">Info Retour</h2>
+                                            <table class="table my-tble">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Produit a Retourné</th>
+                                                        <th>ref Produit</th>
+                                                        <th>Quantité Commandé</th>
+                                                        <th>Quantité retourné</th>
+                                                        <th>Date de demande</th>
+                                                        <th>Status de demande</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let r of Retour">
+                                                        <td>{{r.prd.nomProd}}</td>
+                                                        <td>{{r.prd.refprod}}</td>
+                                                        <td>{{r.commande[0].qte}}</td>
+                                                        <td>{{r.qte}}</td>
+                                                        <td>{{r.createdAt}}</td>
+                                                        <td>{{Acceptation(r.acceptation)}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </ng-template>
+
+                                        <button class="btn btn-success" (click)="demandeRetour(item.id)">Demande de Retour</button>
+                                    </td>
+                                    <ng-template #retourCommande>
+                                        <h2 style="text-align:center">Demmande de Retour d'un Produit</h2>
+                                        <form [formGroup]="k">
+
+                                            <label>Description</label>
+                                            <textarea class="form-control" formControlName="desc">
+                                            </textarea>
+                                            <br/>
+
+                                            <label>quantité</label>
+                                            <input type="number" min="1" [max]="item.qte" class="form-control" formControlName="quan">
+
+                                            <br/>
+                                            <button class="btn btn-success" (click)="retour(c[0].id)">Envoyé un demande</button>
+                                        </form>
+                                    </ng-template>
+                                    <ng-template #success>
+
+                                        <h2 style="text-align:center">Votre demande a été envoyé</h2>
+
+                                    </ng-template>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </ng-template>
+                </td>
+
             </ng-container>
         </tr>
 
     </tbody>
 </table>
+<br/>
+<br/>
+<br/><br/>

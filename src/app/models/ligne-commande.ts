@@ -1,8 +1,9 @@
 export class LigneCommande {
   constructor(
 
-    private idCommande:number,
-    private idprod:number
+    public idCommande:number,
+    public idprod:number,
+    public qte:number
 
   ){}
 }

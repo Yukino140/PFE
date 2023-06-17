@@ -1,8 +1,8 @@
 export interface Product {
-  id: number;
-  title: string;
-  price: number;
-  category: string;
-  description: string;
-  image: string;
+  id: number | undefined;
+  title: string | undefined;
+  price: number | undefined;
+  category: string | undefined;
+  description: string | undefined;
+  image: string | undefined;
 }

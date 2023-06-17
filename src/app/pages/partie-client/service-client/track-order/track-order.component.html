@@ -1,33 +1,19 @@
-<div>
+<div class="container">
 
 </div>
 <div class="checkout-container">
-    <form style="margin-left:25%">
+    <form style="margin-left:35%" [formGroup]="order">
+
+        <label>le numero de Votre Commande</label><br/>
+        <input class="form-control" formControlName="num" required style="width:50%"><br/>
+
+        <button class="btn btn-warning" style="width:15%;margin-left:10%" (click)="toggleDisplayDiv()" type="button">Track</button>
+    </form><br/><br/>
+    <div [hidden]="isShowDiv" style="margin-left:40%">
+
+        Votre Commande est :
+        <th style="text-align:center">{{c[0].statusCommande}}</th>
 
 
-        <input class="form-control" formControlName="fullName" required style="width:30%">
-
-        <button class="btn btn-primary" (click)="toggleDisplayDiv()" type="button">Track</button>
-    </form>
-    <div [hidden]="isShowDiv">
-        <mat-stepper>
-            <mat-step>
-                <ng-template matStepLabel>Order Still in Progress</ng-template>
-
-
-
-
-            </mat-step>
-            <mat-step>
-                <ng-template matStepLabel>Order Still Shipping</ng-template>
-
-
-            </mat-step>
-            <mat-step>
-                <ng-template matStepLabel>Order fulilled</ng-template>
-
-
-            </mat-step>
-        </mat-stepper>
     </div>
 </div>

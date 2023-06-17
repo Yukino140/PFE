@@ -33,16 +33,43 @@ export class HeaderComponent {
 
   connexion(){
     this.router.navigate(['/client/login'])
+
   }
   onClearCart(): void {
     this.cartService.clearCart();
   }
   hide=false
   verif(){
-    if((localStorage.getItem('email')!=null)&&(localStorage.getItem('pass')!=null))
+    if(localStorage.getItem('email')!=null)
       this.hide=true
   }
   goToClientServices(){
     this.router.navigate(['/client/services'])
   }
+  ngOnInit(){
+    this.verif()
+  }
+  logout(){
+    localStorage.removeItem('email')
+    localStorage.removeItem('pass')
+    localStorage.removeItem('nom')
+    localStorage.removeItem('username')
+    localStorage.removeItem('adresse')
+    localStorage.removeItem('role')
+    localStorage.removeItem('matFisc')
+    localStorage.removeItem('telephone')
+    this.verif()
+    window.location.reload()
+  }
+
+  ef(){
+    if(localStorage.getItem('role')=="Admin"){
+      return true;
+    }else{
+      return false;
+    }
+  }
+toAdmin(){
+  this.router.navigate(['/Admin/dashboard'])
+}
 }

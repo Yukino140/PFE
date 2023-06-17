@@ -144,8 +144,11 @@ gatAllCategorie(){
         randomstring += characters.charAt(Math.floor(Math.random() * characters.length))
       }
       this.produit.get('refer')?.setValue(randomstring)    }
-      p!:Produit
+      p!:any
+
+
       openEditProductDialog(id:number){
+
         this.link.getProduitById(id).subscribe((response)=>{
           this.p=response
           console.log(this.p)

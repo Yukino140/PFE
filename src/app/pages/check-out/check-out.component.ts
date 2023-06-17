@@ -1,11 +1,14 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Stripe } from '@stripe/stripe-js';
 import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
 import { Commande } from 'src/app/models/commande';
+import { Facture } from 'src/app/models/facture';
 import { LigneCommande } from 'src/app/models/ligne-commande';
+import { CartService } from 'src/app/services/cart.service';
 import { CoingateServiceService } from 'src/app/services/coingate-service.service';
 import { StoreService } from 'src/app/services/store.service';
 import { StripeService } from 'src/app/services/stripe.service';
@@ -26,27 +29,56 @@ export class CheckOutComponent implements OnInit {
   showCancel!: boolean;
   showError!: boolean;
 
-  constructor(private fb: FormBuilder,private link:StoreService,private http: HttpClient,private cb:CoingateServiceService,private ac:ActivatedRoute,private stripe:StripeService) { }
+  constructor(private cartService: CartService,private fb: FormBuilder,private link:StoreService,private http: HttpClient,private cb:CoingateServiceService,private ac:ActivatedRoute,private stripe:StripeService,private dialog:MatDialog,private router:Router) { }
   paymentHandler:any = null
   total!:number
-   m=Math.floor(Math.random() * 6)
+
+
+    @ViewChild('success') success!:TemplateRef<any>
 
   //Valide Commande
    newCommande(k:string){
     console.log(this.total)
-    let c:Commande=new Commande(this.m,this.shippingForm.get('fullName')?.value,this.shippingForm.get('address')?.value+" "+this.shippingForm.get('city')?.value,this.shippingForm.get('postalCode')?.value,"",k,this.total!,true,1,"Still in Progress")
-    this.link.addCommande(c).subscribe((data:any)=>{
-
-    })
     const items = JSON.parse(localStorage.getItem('cart')!);
-    for(let i=0; i<items.length; i++){
-      let lc:LigneCommande=new LigneCommande(this.m,items[i].id);
+    let c:Commande=new Commande(this.fullname,this.addresse+" "+this.city,this.postalcode,"",k,this.total,true,"",1)
+
+    console.log(c)
+    this.link.addCommande(c).subscribe((data:any)=>{
+      let m:any=data;
+      let ttc=this.total+this.total*0.025
+      let f:Facture=new Facture(m.id,this.total,2.5,ttc);
+     this.link.nouveauFacture(f).subscribe()
+      console.log(data);
+     items.forEach((item: {
+       quantity: number; id: number;
+})=>{
+      let lc:LigneCommande=new LigneCommande(m.id,item.id,item.quantity);
+
       this.link.addLigneCommande(lc).subscribe(()=>{
         console.log('ligne Done')
-      })
-    }
-  }
 
+
+      })
+      this.cartService.clearCart()
+      this.dialog.open(this.success)
+     })
+
+    })
+
+
+  }
+  get fullname(){
+    return this.shippingForm.get('fullName')?.value
+  }
+  get addresse(){
+    return this.shippingForm.get('address')?.value
+  }
+  get city(){
+    return this.shippingForm.get('city')?.value
+  }
+  get postalcode(){
+    return this.shippingForm.get('postalCode')?.value
+  }
 
   ngOnInit(): void {
     // Initialize shipping form
@@ -96,6 +128,7 @@ export class CheckOutComponent implements OnInit {
     })
 
   }
+
   invokeStriped(){
     if(!window.document.getElementById('stripe-script')){
       const script=window.document.createElement('script');
@@ -132,6 +165,11 @@ export class CheckOutComponent implements OnInit {
 
   }
 
+
+  Home(){
+    this.router.navigate(['/client/main'])
+    this.dialog.closeAll()
+  }
 
 }
 

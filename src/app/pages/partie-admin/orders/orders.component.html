@@ -5,17 +5,10 @@
         <tr>
 
             <th>
-                Id Commande
+                Recherche
                 <input #ref type="text" class="form-control" />
             </th>
-            <th>
-                Status
-                <select class="form-select">
-                <option >Order in Progress</option>
-                <option>Order Still Shipping</option>
-                <option >Order fulfilled</option>
-            </select>
-            </th>
+
 
 
 
@@ -46,9 +39,27 @@
             </select>
             </td>
             <td>
-                <button class="btn btn-secondary" (click)="openInfo()"><mat-icon>info</mat-icon></button>
+                <button class="btn btn-secondary" (click)="openInfo(i.id)"><mat-icon>info</mat-icon></button>
                 <ng-template #infoCommande>
                     <h2 style="text-align:center">Info Commande</h2>
+                    <table class="table my-table">
+                        <thead>
+                            <tr>
+                                <th>Nom Produit</th>
+                                <th>ref Produit</th>
+                                <th>prix</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of LigneCommande">
+                                <td>{{item.prod.nomProd}}</td>
+                                <td>{{item.prod.refprod}}</td>
+                                <td>{{item.prod.prix}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
 
                 </ng-template>
             </td>

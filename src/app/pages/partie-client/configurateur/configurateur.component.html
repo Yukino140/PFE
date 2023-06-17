@@ -1,0 +1,599 @@
+<div class="container all" style="margin-top:50px;">
+    <div class="row justify-content-md-center">
+
+        <div class="col-xl-6">
+            <img src="../../../../assets/elconfigurateur.png" width="100%" height="75%" style="float: left;" alt="elconfigurateur.png" />
+            <p style="text-align: left;"><span style="color: #444444; font-family: 'Open Sans', sans-serif; font-size: 17px; font-weight: bold; text-align: justify; background-color: #ffffff;">Avec notre Configurateur intelligent, et son moteur de compatibilité, Créez votre PC en un Clic, selon vos besoins et votre Budget.</span></p>
+            <p style="margin: 0px 0px 30px; padding: 0px; color: #444444; font-family: 'Open Sans', sans-serif; font-size: 17px; font-weight: bold; background-color: #ffffff; text-align: left;">La garantie couvre une obligation de réparation à l’identique sous réserve de délais et selon disponibilité de la pièce. En cas de changement de gamme ou de pénurie de l’un des composants sous garantie, votre garantie d’un an sera assurée
+                avec l’obligation de prendre en charge la différence de prix.</p>
+        </div>
+        <div class="col-xl-6">
+            <img src="../../../../assets/configurateur_pc.png" width="100%" height="100%" style="float: right;" alt="configurateur_pc.png" />
+        </div>
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="col-xl-6">
+            <div style="border:1px solid #3F51B5;height:110px;width:95%;margin-left:5%;margin-bottom:2%;background-color:#3F51B5;border-radius:10px;color:white">
+                <div>
+
+                </div>
+                <div style="width:100%;height:100%;" class="row">
+                    <div class="col-8">
+                        PROCESSEUR
+                    </div>
+
+                    <div class="col-2" (click)="openDeleteProcesseurDialog()">
+                        Ajouter
+                    </div>
+                    <div #procAjoute class="col-8">
+
+                    </div>
+                    <div class="col-2" [hidden]="verif">
+                        Supprimer
+                    </div>
+                    <div class="col-2" [hidden]="verif" (click)="openDeleteProcesseurDialog()">
+                        Modifier
+                    </div>
+                </div>
+
+                <ng-template #processeur>
+
+                    <div>
+                        <h2 style="text-align:center">Ajouter un PROCESSEUR</h2>
+                        <table class="table my-table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Reference</th>
+                                    <th>Prix</th>
+                                    <th>Disponibilité</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let i of Produit" (click)="ajouterProcesseur(i.nomProd)">
+                                    <ng-container *ngIf="i.categorie.refCateg=='Processeur'">
+                                        <td><img [src]="i.image" style="width:100px;height: 100px;float:left">&nbsp;&nbsp; {{i.nomProd}}</td>
+                                        <td>{{i.refprod}}</td>
+
+                                        <td>{{i.prix}}TND</td>
+                                        <td>Disponible</td>
+                                    </ng-container>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </ng-template>
+
+
+            </div>
+            <div style="border:1px solid #3F51B5;height:110px;width:95%;margin-left:5%;margin-bottom:2%;background-color:#3F51B5;border-radius:10px;color:white">
+                <div>
+
+                </div>
+                <div style="width:100%;height:100%;" class="row">
+                    <div class="col-8">
+                        REFROIDISSEUR ET AIO
+                    </div>
+                    <div (click)="Openrefroidisseur()" class="col-2">
+                        Ajouter
+                    </div>
+                    <div #refroiAjouter class="col-8">
+
+                    </div>
+                    <div class="col-2" [hidden]="verifr">
+                        Supprimer
+                    </div>
+                    <div class="col-2" [hidden]="verifr" (click)="openDeleteProcesseurDialog()">
+                        Modifier
+                    </div>
+                </div>
+
+                <ng-template #refroidisseur>
+
+                    <div>
+                        <h2 style="text-align:center">Ajouter un Refroidisseur</h2>
+                        <table class="table my-table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Reference</th>
+                                    <th>Prix</th>
+                                    <th>Disponibilité</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let i of Produit" (click)="ajouterRefroidisseur(i.nomProd)">
+                                    <ng-container *ngIf="i.categorie[0].refCateg=='Refroidisseur'">
+                                        <td><img [src]="i.image" style="width:100px;height: 100px;float:left">&nbsp;&nbsp; {{i.nomProd}}</td>
+                                        <td>{{i.refprod}}</td>
+
+                                        <td>{{i.prix}}TND</td>
+                                        <td>Disponible</td>
+                                    </ng-container>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </ng-template>
+
+            </div>
+            <div style="border:1px solid #3F51B5;height:110px;width:95%;margin-left:5%;margin-bottom:2%;background-color:#3F51B5;border-radius:10px;color:white">
+                <div>
+
+                </div>
+                <div class="row">
+
+                    <div class="col-8">
+                        CARTE MERE
+                    </div>
+                    <div class="col-2" (click)="opencartemere()">
+                        Ajouter
+                    </div>
+                    <div #carteMAjouter class="col-8">
+
+                    </div>
+                    <div class="col-2" [hidden]="verifM">
+                        Supprimer
+                    </div>
+                    <div class="col-2" [hidden]="verifM" (click)="openDeleteProcesseurDialog()">
+                        Modifier
+                    </div>
+                </div>
+                <ng-template #cartemere>
+                    <div>
+                        <h2 style="text-align:center">Ajouter un Carte Mére</h2>
+                        <table class="table my-table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Reference</th>
+                                    <th>Prix</th>
+                                    <th>Disponibilité</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let i of Produit" (click)="ajouterCarteMere(i.nomProd)">
+                                    <ng-container *ngIf="i.categorie[0].refCateg=='Carte Mére'">
+                                        <td><img [src]="i.image" style="width:100px;height: 100px;float:left">&nbsp;&nbsp; {{i.nomProd}}</td>
+                                        <td>{{i.refprod}}</td>
+
+                                        <td>{{i.prix}}TND</td>
+                                        <td>Disponible</td>
+                                    </ng-container>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </ng-template>
+
+            </div>
+            <div style="border:1px solid #3F51B5;height:110px;width:95%;margin-left:5%;margin-bottom:2%;background-color:#3F51B5;border-radius:10px;color:white">
+                <div>
+
+                </div>
+                <div class="row">
+
+                    <div class="col-8">
+                        MEMOIRE VIVE
+                    </div>
+                    <div class="col-2" (click)="openmemoirevive()">
+                        Ajouter
+                    </div>
+                    <div #memoireVAjouter class="col-8">
+
+                    </div>
+                    <div class="col-2" [hidden]="verifMV">
+                        Supprimer
+                    </div>
+                    <div class="col-2" [hidden]="verifMV" (click)="openDeleteProcesseurDialog()">
+                        Modifier
+                    </div>
+                </div>
+                <ng-template #memoirevive>
+                    <div>
+                        <h2 style="text-align:center">Ajouter un Mémoire Vive</h2>
+                        <table class="table my-table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Reference</th>
+                                    <th>Prix</th>
+                                    <th>Disponibilité</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let i of Produit" (click)="ajouterMemoireVive(i.nomProd)">
+                                    <ng-container *ngIf="i.categorie[0].refCateg=='Memoire Vive'">
+                                        <td><img [src]="i.image" style="width:100px;height: 100px;float:left">&nbsp;&nbsp; {{i.nomProd}}</td>
+                                        <td>{{i.refprod}}</td>
+
+                                        <td>{{i.prix}}TND</td>
+                                        <td>Disponible</td>
+                                    </ng-container>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </ng-template>
+
+            </div>
+            <div style="border:1px solid #3F51B5;height:110px;width:95%;margin-left:5%;margin-bottom:2%;background-color:#3F51B5;border-radius:10px;color:white">
+                <div>
+
+                </div>
+                <div class="row">
+
+                    <div class="col-8">
+                        CARTE GRAPHIQUE
+                    </div>
+                    <div class="col-2" (click)="opengraphique()">
+                        Ajouter
+                    </div>
+                    <div #carteGAjouter class="col-8">
+
+                    </div>
+                    <div class="col-2" [hidden]="verifCG">
+                        Supprimer
+                    </div>
+                    <div class="col-2" [hidden]="verifCG" (click)="openDeleteProcesseurDialog()">
+                        Modifier
+                    </div>
+                </div>
+                <ng-template #graphique>
+                    <div>
+                        <h2 style="text-align:center">Ajouter un Carte Graphique</h2>
+                        <table class="table my-table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Reference</th>
+                                    <th>Prix</th>
+                                    <th>Disponibilité</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let i of Produit" (click)="ajouterCarteGraphique(i.nomProd)">
+                                    <ng-container *ngIf="i.categorie[0].refCateg=='Carte Graphique'">
+                                        <td><img [src]="i.image" style="width:100px;height: 100px;float:left">&nbsp;&nbsp; {{i.nomProd}}</td>
+                                        <td>{{i.refprod}}</td>
+
+                                        <td>{{i.prix}}TND</td>
+                                        <td>Disponible</td>
+                                    </ng-container>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </ng-template>
+
+            </div>
+            <div style="border:1px solid #3F51B5;height:110px;width:95%;margin-left:5%;margin-bottom:2%;background-color:#3F51B5;border-radius:10px;color:white">
+                <div>
+
+                </div>
+                <div class="row">
+                    <div class="col-8">DISQUE DUR</div>
+                    <div class="col-2" (click)="opendisquedur()"> Ajouter</div>
+                    <div #disqueDAjouter class="col-8">
+
+                    </div>
+                    <div class="col-2" [hidden]="verifDD">
+                        Supprimer
+                    </div>
+                    <div class="col-2" [hidden]="verifDD" (click)="openDeleteProcesseurDialog()">
+                        Modifier
+                    </div>
+                </div>
+                <ng-template #disquedur>
+
+                    <div>
+                        <h2 style="text-align:center">Ajouter un Disque Dur</h2>
+                        <table class="table my-table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Reference</th>
+                                    <th>Prix</th>
+                                    <th>Disponibilité</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let i of Produit" (click)="ajouterDisqueDur(i.nomProd)">
+                                    <ng-container *ngIf="i.categorie[0].refCateg=='Disque Dur'">
+                                        <td><img [src]="i.image" style="width:100px;height: 100px;float:left">&nbsp;&nbsp; {{i.nomProd}}</td>
+                                        <td>{{i.refprod}}</td>
+
+                                        <td>{{i.prix}}TND</td>
+                                        <td>Disponible</td>
+                                    </ng-container>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </ng-template>
+
+            </div>
+            <div style="border:1px solid #3F51B5;height:110px;width:95%;margin-left:5%;margin-bottom:2%;background-color:#3F51B5;border-radius:10px;color:white">
+                <div>
+
+                </div>
+                <div class="row">
+                    <div class="col-8">SSD</div>
+                    <div class="col-2" (click)="openssd()">Ajouter</div>
+                    <div #sAjouter class="col-8">
+
+                    </div>
+                    <div class="col-2" [hidden]="verifSS">
+                        Supprimer
+                    </div>
+                    <div class="col-2" [hidden]="verifSS" (click)="openDeleteProcesseurDialog()">
+                        Modifier
+                    </div>
+                </div>
+                <ng-template #ssd>
+                    <div>
+                        <h2 style="text-align:center">Ajouter un SSD</h2>
+                        <table class="table my-table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Reference</th>
+                                    <th>Prix</th>
+                                    <th>Disponibilité</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let i of Produit" (click)="ajouterSSD(i.nomProd)">
+                                    <ng-container *ngIf="i.categorie[0].refCateg=='SSD'">
+                                        <td><img [src]="i.image" style="width:100px;height: 100px;float:left">&nbsp;&nbsp; {{i.nomProd}}</td>
+                                        <td>{{i.refprod}}</td>
+
+                                        <td>{{i.prix}}TND</td>
+                                        <td>Disponible</td>
+                                    </ng-container>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </ng-template>
+
+            </div>
+            <div style="border:1px solid #3F51B5;height:110px;width:95%;margin-left:5%;margin-bottom:2%;background-color:#3F51B5;border-radius:10px;color:white">
+                <div>
+
+                </div>
+                <div class="row">
+
+                    <div class="col-8"> BOITIER</div>
+                    <div class="col-2" (click)="openboitier()"> Ajouter</div>
+                    <div #boiteAjouter class="col-8">
+
+                    </div>
+                    <div class="col-2" [hidden]="verifb">
+                        Supprimer
+                    </div>
+                    <div class="col-2" [hidden]="verifb" (click)="openDeleteProcesseurDialog()">
+                        Modifier
+                    </div>
+                </div>
+                <ng-template #boitier>
+                    <div>
+                        <h2 style="text-align:center">Ajouter un Boitier</h2>
+                        <table class="table my-table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Reference</th>
+                                    <th>Prix</th>
+                                    <th>Disponibilité</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let i of Produit" (click)="ajouterBoitier(i.nomProd)">
+                                    <ng-container *ngIf="i.categorie[0].refCateg=='Boitier'">
+                                        <td><img [src]="i.image" style="width:100px;height: 100px;float:left">&nbsp;&nbsp; {{i.nomProd}}</td>
+                                        <td>{{i.refprod}}</td>
+
+                                        <td>{{i.prix}}TND</td>
+                                        <td>Disponible</td>
+                                    </ng-container>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </ng-template>
+
+            </div>
+            <div style="border:1px solid #3F51B5;height:110px;width:95%;margin-left:5%;margin-bottom:2%;background-color:#3F51B5;border-radius:10px;color:white">
+                <div>
+
+                </div>
+                <div class="row">
+                    <div class="col-8"> ALIMENTATION</div>
+                    <div class="col-2" (click)="openalimentation()">Ajouter</div>
+                    <div #alimenAjouter class="col-8">
+
+                    </div>
+                    <div class="col-2" [hidden]="verifAL">
+                        Supprimer
+                    </div>
+                    <div class="col-2" [hidden]="verifAL" (click)="openDeleteProcesseurDialog()">
+                        Modifier
+                    </div>
+                </div>
+                <ng-template #alimentation>
+                    <div>
+                        <h2 style="text-align:center">Ajouter un Alimentation</h2>
+                        <table class="table my-table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Reference</th>
+                                    <th>Prix</th>
+                                    <th>Disponibilité</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let i of Produit" (click)="ajouterAlimentation(i.nomProd)">
+                                    <ng-container *ngIf="i.categorie[0].refCateg=='Alimentation'">
+                                        <td><img [src]="i.image" style="width:100px;height: 100px;float:left">&nbsp;&nbsp; {{i.nomProd}}</td>
+                                        <td>{{i.refprod}}</td>
+
+                                        <td>{{i.prix}}TND</td>
+                                        <td>Disponible</td>
+                                    </ng-container>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </ng-template>
+
+            </div>
+            <div style="border:1px solid #3F51B5;height:110px;width:95%;margin-left:5%;margin-bottom:2%;background-color:#3F51B5;border-radius:10px;color:white">
+                <div>
+
+                </div>
+                <div class="row">
+
+                    <div class="col-8">WIFI PCI EX - CASE FANS</div>
+                    <div class="col-2" (click)="openwifi()">Ajouter</div>
+                    <div #wiAjouter class="col-8">
+
+                    </div>
+                    <div class="col-2" [hidden]="verifW">
+                        Supprimer
+                    </div>
+                    <div class="col-2" [hidden]="verifW" (click)="openDeleteProcesseurDialog()">
+                        Modifier
+                    </div>
+                </div>
+                <ng-template #wifi>
+
+                    <div>
+                        <h2 style="text-align:center">Ajouter un WIFI PCI EX - CASE FANS</h2>
+                        <table class="table my-table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Reference</th>
+                                    <th>Prix</th>
+                                    <th>Disponibilité</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let i of Produit" (click)="ajouterWifi(i.nomProd)">
+                                    <ng-container *ngIf="i.categorie[0].refCateg=='WIFI PCI EX - CASE FANS'">
+                                        <td><img [src]="i.image" style="width:100px;height: 100px;float:left">&nbsp;&nbsp; {{i.nomProd}}</td>
+                                        <td>{{i.refprod}}</td>
+
+                                        <td>{{i.prix}}TND</td>
+                                        <td>Disponible</td>
+                                    </ng-container>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </ng-template>
+
+            </div>
+            <div style="border:1px solid #3F51B5;height:110px;width:95%;margin-left:5%;margin-bottom:2%;background-color:#3F51B5;border-radius:10px;color:white">
+                <div>
+
+                </div>
+                <div class="row ">
+
+                    <div class="col-8 ">PATE THERMIQUE</div>
+                    <div class="col-2 " (click)="openpatethermique() ">Ajouter</div>
+                    <div #pateAjouter class="col-8 ">
+
+                    </div>
+                    <div class="col-2 " [hidden]="verifPT ">
+                        Supprimer
+                    </div>
+                    <div class="col-2 " [hidden]="verifPT " (click)="openDeleteProcesseurDialog() ">
+                        Modifier
+                    </div>
+                </div>
+                <ng-template #patethermique>
+                    <div>
+                        <h2 style="text-align:center ">Ajouter un Pate Thermique</h2>
+                        <table class="table my-table ">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Reference</th>
+                                    <th>Prix</th>
+                                    <th>Disponibilité</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let i of Produit " (click)="ajouterPateThermique(i.nomProd) ">
+                                    <ng-container *ngIf="i.categorie[0].refCateg=='Pate Thermique' ">
+                                        <td><img [src]="i.image " style="width:100px;height: 100px;float:left ">&nbsp;&nbsp; {{i.nomProd}}</td>
+                                        <td>{{i.refprod}}</td>
+
+                                        <td>{{i.prix}}TND</td>
+                                        <td>Disponible</td>
+                                    </ng-container>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </ng-template>
+
+            </div>
+        </div>
+        <div class="col-xl-6 ">
+            <div style="border:1px solid #3F51B5;width:50%;margin-left:5%;margin-top:5%;border-radius:10px ">
+                <div>
+                    <div style="margin-left:50px;margin-top:5px ">
+                        <th style="border:1px solid #3F51B5;width:80%;margin-top:10px ;background-color: #3F51B5;color:white; ">RECAPITULATIF</th>
+                        <div #processeurAjouter>
+
+                        </div>
+
+                        <div #refroisisseurAjouter></div>
+                        <div #carteMereAjouter></div>
+                        <div #memoireViveAjouter></div>
+                        <div #carteGraphiqueAjouter></div>
+                        <div #disqueDurAjouter></div>
+                        <div #ssdAjouter></div>
+                        <div #boiterAjouter></div>
+                        <div #alimentationAjouter></div>
+                        <div #wifiAjouter></div>
+                        <div #pateTAjouter></div>
+                        <div><strong>Total:0 DT HT</strong></div>
+                        <th style="border:1px solid #3F51B5;width:80%;margin-top:10px ;background-color: #3F51B5;color:white; ">VALIDER VOTRE CONFIGURATION
+                        </th>
+                        <form style="margin-bottom:5px">
+                            <input type="text " class="form-control " placeholder="Nom* " />
+                            <input type="text " class="form-control " placeholder="Prenom* " />
+                            <input type="text " class="form-control " placeholder="Téléphone* " />
+                            <input type="text " class="form-control " placeholder="Email* " />
+                            <button class="btn btn-primary ;">Valider</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br><br><br>

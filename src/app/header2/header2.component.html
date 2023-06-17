@@ -13,13 +13,23 @@
 
                     <div class="collapse navbar-collapse" id="navbar_main">
                         <ul class="navbar-nav">
-                            <li class="nav-item" *ngFor="let category of Categorie">
-                                <a class="custom nav-link active " (click)="sendId(category.id)" routerLink="/client/home/category.id">{{ category.refCateg }}</a>
+                            <li mdbDropdown class="nav-item" *ngFor="let category of Categorie" #menuTrigger1="matMenuTrigger" (mouseenter)="openMyMenu(menuTrigger1,category.id)" [matMenuTriggerFor]="menu">
+                                <a mat-list-item class="custom nav-link active ">{{ category.refCateg }}</a>
+
+                                <mat-menu #menu="matMenu">
+
+                                    <ng-container *ngFor="let c of SousCateg">
+                                        <button mat-menu-item *ngIf="category.id!=c.id" routerLink="/client/home/c.id" (click)="sendId(c.id)">  {{c.refCateg}}</button>
+
+                                    </ng-container>
+                                    <button mat-menu-item *ngIf="category.refCateg=='Kaspersky'" routerLink="/client/inscriEvent">Formation</button>
+                                </mat-menu>
                             </li>
-                            <!--<li class="nav-item">
-                    <a class="custom nav-link active " routerLink="/home">Webinars</a>
-                  </li>
-                  <li class="nav-item">
+
+                            <li class="nav-item" [hidden]=verif>
+                                <a class="custom nav-link active " routerLink="/client/configurateur" style="color:green">El configurateur</a>
+                            </li>
+                            <!-- <li class="nav-item">
                     <a class="custom nav-link active " routerLink="/home">Pc</a>
                   </li>
 
@@ -53,7 +63,10 @@
             </div>
             <!-- collapse end.// -->
         </div>
+        <button mat-icon-button (click)="make()" [hidden]=!search><mat-icon>search</mat-icon></button>
+        <input type="search" class="form-control search" [hidden]=search placeholder="search">
         <!-- container end.// -->
     </mat-toolbar>
+
     <!-- navbar end.// -->
 </header>

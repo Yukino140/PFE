@@ -55,8 +55,16 @@ import { SalesByMonthComponent } from './pages/partie-admin/dashboard/sales-by-m
 import { SalesByCategorieComponent } from './pages/partie-admin/dashboard/sales-by-categorie/sales-by-categorie.component';
 import { LastFewTransactionsComponent } from './pages/partie-admin/dashboard/last-few-transactions/last-few-transactions.component';
 import { TopThreeProductsComponent } from './pages/partie-admin/dashboard/top-three-products/top-three-products.component';
-
-
+import { ChartModule } from 'angular-highcharts';
+import { ChatbotComponent } from './chatbot/chatbot.component';
+import { ChatboxComponent } from './chatbot/chatbox/chatbox.component';
+import { ConfigurateurComponent } from './pages/partie-client/configurateur/configurateur.component';
+import { CustomersComponent } from './pages/partie-admin/customers/customers.component';
+import { DemandeRetourComponent } from './pages/partie-admin/demande-retour/demande-retour.component';
+import { ListeAdminsComponent } from './pages/partie-admin/liste-admins/liste-admins.component';
+import { FormsModule } from '@angular/forms';
+import { InscriEventComponent } from './pages/inscri-event/inscri-event.component';
+import { FormationsComponent } from './pages/partie-admin/formations/formations.component';
 
 
 
@@ -94,7 +102,15 @@ import { TopThreeProductsComponent } from './pages/partie-admin/dashboard/top-th
     SalesByMonthComponent,
     SalesByCategorieComponent,
     LastFewTransactionsComponent,
-    TopThreeProductsComponent
+    TopThreeProductsComponent,
+    ChatbotComponent,
+    ChatboxComponent,
+    ConfigurateurComponent,
+    CustomersComponent,
+    DemandeRetourComponent,
+    ListeAdminsComponent,
+    InscriEventComponent,
+    FormationsComponent
 
 
   ],
@@ -125,7 +141,9 @@ import { TopThreeProductsComponent } from './pages/partie-admin/dashboard/top-th
     MatTableModule,
     NgxPayPalModule,
     MatDialogModule,
-    MatCardModule
+    MatCardModule,
+    ChartModule,
+    FormsModule
   ],
   providers: [CartService, StoreService],
   bootstrap: [AppComponent],

@@ -1,0 +1,72 @@
+<!-- table.component.html -->
+
+<table class="table my-table">
+    <thead>
+        <tr>
+
+            <th>
+                Recherche
+                <input type="text" class="form-control" />
+            </th>
+
+
+
+
+        </tr>
+    </thead>
+    <thead>
+        <tr>
+            <th>Id Admin</th>
+            <th>username</th>
+            <th>email</th>
+            <th>Nom</th>
+            <th>telephone</th>
+            <th>Adresse</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let i of Client" [ngClass]="{'bg bg-danger':i.password==null}">
+            <ng-container *ngIf="i.role=='Admin'">
+
+                <td>{{i.id}}</td>
+                <td>{{i.username}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.nom}}</td>
+                <td>{{i.telephone}}</td>
+                <td>{{i.adresse}}</td>
+
+
+
+
+
+
+                <td>
+                    <button class="btn btn-secondary"><mat-icon>info</mat-icon></button>
+                    <ng-template #infoClient>
+                        <h2 style="text-align:center">Info Client</h2>
+                        <table class="table my-table">
+                            <thead>
+                                <tr>
+                                    <th>Nom </th>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Telephone</th>
+                                    <th>Adresse</th>
+                                    <th>Matricule Fiscale</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                        <button class="btn btn-success">Accepter Compte</button>
+
+                    </ng-template>
+                </td>
+            </ng-container>
+        </tr>
+    </tbody>
+</table>

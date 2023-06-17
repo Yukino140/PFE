@@ -22,4 +22,17 @@ export class ProductBoxComponent {
     this.addToCart.emit(this.product);
 
   }
+  verif:Boolean=false
+
+  check(){
+    if(localStorage.getItem('email')!=null){
+      this.verif=true
+    }else{
+      this.verif=false
+    }
+  }
+
+  ngOnInit():void{
+    this.check()
+  }
 }

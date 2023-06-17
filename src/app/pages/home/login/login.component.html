@@ -2,7 +2,7 @@
 <div class="container-fluid login-container" id="container">
     <div class="row justify-content-center align-items-center">
         <div class="col-md-4">
-            <mat-card class="login-card" style="margin-left:30%">
+            <mat-card class="login-card">
                 <mat-card-header>
                     <mat-card-title class="login-title">Login</mat-card-title>
                 </mat-card-header>
@@ -16,12 +16,18 @@
                         <input matInput type="password" placeholder="Enter your password" formControlName="pass">
                     </mat-form-field><br/>
                     <button mat-raised-button color="primary" class="login-button" (click)="Login()">Log In</button>
+                    <ng-template #erreurlogin>
+                        <div>
+                            <h2 style="text-align:center">Votre email ou mot de passe est Incorrect</h2>
+                            <button class="btn btn-danger" style="margin-left:50%" (click)="close()">Exit</button>
+                        </div>
+                    </ng-template>
                 </form>
             </mat-card>
 
         </div>
         <div class="col-md-4">
-            <mat-card class="login-card" style="margin-left:10%">
+            <mat-card class="login-card">
                 <mat-card-header>
                     <mat-card-title class="login-title">Creation d'un Compte</mat-card-title>
                 </mat-card-header>
@@ -30,11 +36,48 @@
                         <mat-label>Email</mat-label>
                         <input matInput type="email" placeholder="Enter your email" formControlName="emailC">
                     </mat-form-field><br/>
-                    <mat-form-field class="form-field">
+                    <!--<mat-form-field class="form-field">
                         <mat-label>Password</mat-label>
                         <input matInput type="password" placeholder="Enter your password" formControlName="passC  ">
-                    </mat-form-field><br/>
-                    <button mat-raised-button color="primary" class="login-button">Sign Up</button>
+                    </mat-form-field><br/>-->
+                    <button mat-raised-button color="primary" class="login-button" (click)="continue()">Sign Up</button>
+                    <ng-template #signupform>
+                        <div>
+                            <h2 style="text-align:center">Crée un Compte</h2>
+
+                            <mat-form-field class="form-field">
+
+                                <mat-label>Username</mat-label>
+                                <input matInput type="text" placeholder="Enter votre username" formControlName="username">
+                            </mat-form-field><br/>
+                            <mat-form-field class="form-field">
+                                <mat-label>Nom</mat-label>
+                                <input matInput type="text" placeholder="Enter votre nom" formControlName="nom">
+                            </mat-form-field><br/>
+                            <mat-form-field class="form-field">
+                                <mat-label>Telephone</mat-label>
+                                <input matInput type="text" placeholder="Enter votre numéro de telephone" formControlName="tel">
+                            </mat-form-field><br/>
+                            <mat-form-field class="form-field">
+                                <mat-label>Adresse</mat-label>
+                                <input matInput type="text" placeholder="Enter votre Adresse" formControlName="addr">
+                            </mat-form-field><br/>
+                            <mat-form-field class="form-field">
+                                <mat-label>Matricule Fiscale</mat-label>
+                                <input matInput type="text" placeholder="Enter votre Matricule Fiscale" formControlName="matFisc">
+                            </mat-form-field><br/>
+                            <button class="btn btn-success" style="margin-left:11%" (click)="signUp()">Crée un Compte</button>
+
+                        </div>
+
+                    </ng-template>
+                    <ng-template #successSignUp>
+                        <div>
+                            <mat-icon>success</mat-icon>
+                            <h2>La demande de creation du Compte a été envoyé,nous aurons vous envoyez votre info personnelle par mail</h2><br/>
+                            <button style="margin-left:35%" class="btn btn-success" (click)="close()">Close</button>
+                        </div>
+                    </ng-template>
                 </form>
             </mat-card>
         </div>

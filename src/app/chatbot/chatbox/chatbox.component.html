@@ -1,0 +1,16 @@
+<div class="chatbox">
+    <div class="messages">
+        <div *ngFor="let message of messages" class="message">
+            <div *ngIf="message.issuer == 'USER'" class="message-content bg bg-primary">{{ message.message }}</div>
+            <div *ngIf="message.issuer == 'BOT'" class="message-content message-bot bg bg-secondary" style="margin-left: auto; margin-right: 0;" align="end">{{ message.message }}</div>
+        </div>
+    </div>
+
+    <div class="input">
+        <form [formGroup]="f">
+            <input type="text" formControlName="newMessage" (keyup.enter)="sendMessage()" placeholder="Type a message...">
+            <button (click)="sendMessage()">Send</button>
+        </form>
+    </div>
+
+</div>

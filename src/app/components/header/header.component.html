@@ -1,6 +1,6 @@
 <mat-toolbar class="justify-between max-w-7xl mx-auto border-x">
     <a routerLink="main"><img src="assets\img\logo.png" alt="MIPS"></a>
-    <input matInput type="search" placeholder="search">
+    <!--<input matInput type="search" placeholder="search">-->
     <span>
   <button mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon
@@ -10,14 +10,19 @@
       >shopping_cart</mat-icon
     >
   </button>
-  <button mat-icon-button color="primary" [hidden]=hide (click)="goToClientServices()">
+  <button mat-icon-button color="primary"  (click)="goToClientServices()" [hidden]=!hide>
     <mat-icon>account_circle</mat-icon>
+
     </button>
 
+    <button class="btn btn-danger" (click)="logout()" [hidden]=!hide  style="font-style:none;font-size:15px">Deconnexion</button>
+
   <button mat-raised-button color="primary" (click)="connexion()" [hidden]=hide>
-  connexion
+  Connexion
   </button>
+  <button class="btn btn-warning" style="transform:translate(2%,2%)" (click)="toAdmin()" *ngIf="ef()">Dashboard</button>
   </span>
+
 
 
 

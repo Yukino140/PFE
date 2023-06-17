@@ -1,0 +1,70 @@
+<!-- table.component.html -->
+
+<table class="table my-table">
+    <thead>
+        <tr>
+
+            <th>
+                Recherche
+                <input type="text" class="form-control" />
+            </th>
+
+
+
+
+        </tr>
+    </thead>
+    <thead>
+        <tr>
+            <th>Client</th>
+            <th>Produit Retourné</th>
+            <th>Email</th>
+            <th>id de Commande</th>
+
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let i of Retour" [ngClass]="{'bg bg-warning':i.acceptation==null}">
+            <td>{{i.client.username}}</td>
+            <td>{{i.prd.nomProd}}</td>
+            <td>{{i.client.email}}</td>
+            <td>{{i.cm[0].id}}</td>
+            <td>
+                <button class="btn btn-secondary" (click)="info(i.id)"><mat-icon>info</mat-icon></button>
+                <ng-template #infoClient width:10%>
+                    <h2 style="text-align:center">Info du Reclamation</h2><br/>
+                    <h3 style="font-style:underline">Info de Produit</h3>
+                    <div style="border:1px solid black;padding:5px;border-radius:10px">
+                        <th>Nom Produit: </th>{{m[0].prd.nomProd}}<br/>
+                        <th>Ref Produit: </th>{{m[0].prd.refprod}}<br/>
+                        <th>Quantité Commandé: </th>{{m[0].commande[0].qte}}<br/>
+                        <th>Prix Unitaire: </th>{{m[0].prd.prix}}<br/>
+                        <th>Quantité a Reclamé</th>{{m[0].qte}}<br/>
+                    </div><br/><br/>
+                    <h3 style="font-style:underline">Info du Client: </h3>
+                    <div style="border:1px solid black;padding:5px;border-radius:10px">
+                        <th>Nom Client: </th>{{m[0].client.nom}}<br/>
+                        <th>Email Client: </th>{{m[0].client.email}}<br/>
+                        <th>Adresse Client: </th>{{m[0].client.adresse}}<br/>
+                        <th>Adresse de Livraison du Commande: </th>{{m[0].cm[0].shippingAddress}}
+                        <th>Date de demande: </th>{{m[0].createdAt}}
+                    </div><br/>
+                    <h3>Cause de Reclamation</h3>
+                    <div>{{m[0].description}}</div>
+                    <button class="btn btn-success" style="margin-left:10%" (click)="accepter(m[0].id)" *ngIf="m[0].acceptation==null">Accepter</button>
+                    <ng-template #accepte>
+                        <div>La demande est Accepter</div>
+                        <button class="btn btn-danger" style="margin-left:35%" (click)="close()">Exit</button>
+                    </ng-template>
+                    <button class="btn btn-danger" style="margin-left:10%" (click)="refuser(m[0].id)" *ngIf="m[0].acceptation==null">Refuser</button>
+                    <ng-template #refuse>
+                        <div>La demande est Refusé</div>
+                        <button class="btn btn-danger" style="margin-left:35%" (click)="close()">Exit</button>
+                    </ng-template>
+                </ng-template>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './pages/cart/cart.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -18,6 +18,11 @@ import { AccountComponent } from './pages/partie-client/service-client/account/a
 import { FactureComponent } from './pages/partie-client/service-client/facture/facture.component';
 import { CommandesComponent } from './pages/partie-client/service-client/commandes/commandes.component';
 import { TrackOrderComponent } from './pages/partie-client/service-client/track-order/track-order.component';
+import { ConfigurateurComponent } from './pages/partie-client/configurateur/configurateur.component';
+import { DemandeRetourComponent } from './pages/partie-admin/demande-retour/demande-retour.component';
+import { ListeAdminsComponent } from './pages/partie-admin/liste-admins/liste-admins.component';
+import { InscriEventComponent } from './pages/inscri-event/inscri-event.component';
+import { FormationsComponent } from './pages/partie-admin/formations/formations.component';
 
 const routes: Routes = [
 {
@@ -28,6 +33,9 @@ const routes: Routes = [
     {path:"orders",component:OrdersComponent},
     {path:"customers",component:CustomersComponent},
     {path:"analytics",component:AnalyticsComponent},
+    {path:'retour',component:DemandeRetourComponent},
+    {path:'listeAdmin',component:ListeAdminsComponent},
+    {path:'formation',component:FormationsComponent}
   ]
 },
 
@@ -37,6 +45,14 @@ children:[
   {
     path: 'home/:id',
     component: HomeComponent,
+  },
+  {
+    path:'inscriEvent',
+    component:InscriEventComponent
+  },
+  {
+    path:'configurateur',
+    component: ConfigurateurComponent
   },
   {
     path: 'main',
