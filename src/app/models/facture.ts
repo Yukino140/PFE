@@ -4,6 +4,8 @@ export class Facture {
     public prixHT:number,
     public tva:number,
     public prixTTC:number,
+    public idClient:number,
+
     public datecreation?:Date,
     public id?:number
   ){

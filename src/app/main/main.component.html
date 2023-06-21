@@ -162,11 +162,20 @@
 
                     <div class="input-group mb-3 mt-4">
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Votre Adresse Mail" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <form [formGroup]="newsletter">
+                                <input type="text" class="form-control" placeholder="Votre Adresse Mail" aria-label="Recipient's username" aria-describedby="button-addon2" formControlName="email">
+
+                            </form>
                         </div>
                         <div class="col">
-                            <button class="btn btn-success border-rad" type="button" id="button-addon2">S'inscrire</button>
+                            <button class="btn btn-success border-rad" type="button" id="button-addon2" (click)="addnewsLetter()">S'inscrire</button>
                         </div>
+                        <ng-template #newsLetter>
+                            <div>
+                                <h3>Vous etes inscri a notre NewsLetter </h3>
+                                <button class="btn btn-danger" (click)="close()">Exit</button>
+                            </div>
+                        </ng-template>
                     </div>
 
 

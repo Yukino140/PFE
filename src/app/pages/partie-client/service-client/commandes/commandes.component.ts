@@ -90,7 +90,7 @@ export class CommandesComponent implements OnInit {
       console.log(r)
       this.link.demandeRetour(r).subscribe(()=>{
         this.dialog.closeAll()
-        this.dialog.open(this.success)
+        alert('demande envoyée')
       })
     })
 

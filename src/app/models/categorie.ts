@@ -1,6 +1,8 @@
 export class Categorie {
   constructor(
-    public id:number,
-    public refCateg:String
+
+    public refCateg:String,
+    public idCateg?:any,
+    public id?:number
   ){}
 }

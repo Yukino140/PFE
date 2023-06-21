@@ -1,0 +1,28 @@
+<!-- table.component.html -->
+
+<table class="table my-table">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Reclamation</th>
+            <th>Date</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let i of Reclamations ">
+
+            <td>{{i.id}}</td>
+            <td>{{i.text }}</td>
+            <td>{{i.createdAt | date:"dd/MM/yyyy"}}</td>
+
+            <td>
+
+
+            </td>
+
+        </tr>
+    </tbody>
+</table>

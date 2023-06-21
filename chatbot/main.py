@@ -21,9 +21,11 @@ with open("intents.json") as file:
     data =json.load(file)
 
 try:
+   
    with open("data.pickle","rb") as f:
        words,labels,training,output=pickle.load(f)  
 except:
+    words,labels,training,output=pickle.load(f)
     words = []
     labels = []
     docs_x=[]
@@ -107,15 +109,17 @@ def chat(msg):
         result_index = np.argmax(results)
         tag = labels[result_index]
         
-        if results[result_index] >0.7:
+        if results[result_index] >0.3:
         
             for tg in data["intents"]:
                 if tg['tag']==tag:
                     responses = tg['responses']
+                    intention = tg['tag']
             # print(random.choice(responses))
             return json.dumps({
                 "message" : random.choice(responses),
-                "issuer" : "BOT"
+                "issuer" : "BOT",
+                "intention":intention
                 })
         else:
             # print("I didn't get that try again")
@@ -136,7 +140,6 @@ def predict():
     print()
     print(msg["message"])
     print()
-    # return json.dumps({"message": "FUCK OFF"})
     return chat(msg["message"])
     
 if __name__ == '__main__':

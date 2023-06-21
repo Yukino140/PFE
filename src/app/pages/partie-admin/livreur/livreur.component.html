@@ -1,0 +1,46 @@
+<!-- table.component.html -->
+
+<table class="table my-table">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom Livreur</th>
+            <th>Email</th>
+            <th>Emplacement</th>
+            <th><button class="btn btn-success" (click)="add()">Ajouter Livreur</button>
+                <ng-template #livreur>
+                    <h2>Nouveau Livreur</h2>
+                    <form [formGroup]="addlivreur">
+                        <mat-form-field>
+                            <label>Nom Livreur</label>
+                            <input formControlName="nom" class="form-control">
+                        </mat-form-field><br/>
+                        <mat-form-field>
+                            <label>Email</label>
+                            <input formControlName="email" class="form-control">
+                        </mat-form-field><br/>
+                        <mat-form-field>
+                            <label>Emplacement</label>
+                            <input formControlName="emplacement" class="form-control">
+                        </mat-form-field>
+                    </form>
+                    <button class="btn btn-success" (click)="ajoute()">Ajouter</button>
+                </ng-template>
+            </th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let i of Livreur ">
+
+            <td>{{i.id}}</td>
+            <td>{{i.nomLivreur }}</td>
+            <td>{{i.email }}</td>
+            <td>{{i.emplacement}}</td>
+
+
+        </tr>
+    </tbody>
+</table>

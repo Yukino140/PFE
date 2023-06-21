@@ -29,9 +29,8 @@
             <p style="box-sizing: border-box; margin: 28px 0px 30px; padding: 0px; color: #444444; font-family: 'Open Sans', sans-serif; font-size: 16px; background-color: #ffffff;"></p>
             <p style="box-sizing: border-box; margin: 28px 0px 30px; padding: 0px; color: #444444; font-family: 'Open Sans', sans-serif; font-size: 16px; background-color: #ffffff;"></p>
             <ul style="box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #444444; font-family: 'Open Sans', sans-serif; font-size: 16px; background-color: #ffffff;">
-                <li style="box-sizing: border-box;">- Du mardi 31 Mars au 2 Avril 2020</li>
-                <li style="box-sizing: border-box;">- Du mardi 23 au 25 Juin 2020</li>
-                <li style="box-sizing: border-box;">- Du mardi 20 au 22 Octobre 2020</li>
+                <li style="box-sizing: border-box;" *ngFor="let i of Events">- {{i.date| date:"dd/MM/yyyy"}}</li>
+
             </ul>
         </div>
 

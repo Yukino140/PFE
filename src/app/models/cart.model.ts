@@ -7,6 +7,7 @@ export interface CartItem {
   name: string;
   price: number;
   quantity: number;
+  qtemax:number;
   id?: number;
   ref:string;
 }

@@ -6,6 +6,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { DomSanitizer } from "@angular/platform-browser";
 import { MatDialog } from '@angular/material/dialog';
 import { Produit } from 'src/app/models/produit';
+import { Categorie } from 'src/app/models/categorie';
 
 
 
@@ -61,11 +62,15 @@ gatAllCategorie(){
         desc:new FormControl(''),
         prixancient:new FormControl(''),
         prix:new FormControl(''),
+        stc:new FormControl(''),
 
 
     }
 
     );
+    get stc(){
+      return this.produit.get('stc')?.value
+    }
     get refer(){
       return this.produit.get('refer')?.value
     }
@@ -89,7 +94,7 @@ gatAllCategorie(){
     }
     addProduct(){
 
-      let pr:Produit=new Produit(this.refer,this.nom,this.categ,this.img,this.desc,this.prixancient,this.prix)
+      let pr:Produit=new Produit(this.refer,this.nom,this.categ,this.img,this.desc,this.prixancient,this.prix,false,this.stc)
 
       this.link.addProduit(pr).subscribe(
         () => {
@@ -98,8 +103,12 @@ gatAllCategorie(){
         }
       )
     }
-    openDeleteProductDialog(){
-      this.dialog.open(this.deleteproduct);
+    k!:any
+    openDeleteProductDialog(id:number){
+      this.link.getProduitById(id).subscribe((response)=>{
+        this.k=response
+      })
+       this.dialog.open(this.deleteproduct);
 
     }
     closeDialog(){
@@ -159,6 +168,7 @@ gatAllCategorie(){
           this.produit.get('desc')?.setValue(this.p.description)
           this.produit.get('prixancient')?.setValue(this.p.prixAncient)
           this.produit.get('prix')?.setValue(this.p.prix)
+          this.produit.get('stc')?.setValue(this.p.nbmax)
         })
 
         this.dialog.open(this.editproduct);
@@ -167,10 +177,41 @@ gatAllCategorie(){
 
 
       editProduct(id:number){
-        this.link.editProduit(id,this.p).subscribe(()=>{
+        let p:Produit=new Produit(this.ref,this.nom,this.categ,this.img,this.desc,this.prixancient,this.prix,false,this.stc);
+        this.link.editProduit(id,p).subscribe(()=>{
           this.dialog.closeAll()
           window.location.reload()
         })
       }
 
+@ViewChild('categorieDialogue')ca!:TemplateRef<any>
+      openAddCategorieDialog(){
+        this.dialog.open(this.ca)
+      }
+      nvCategorie:FormGroup=new FormGroup({
+        bcateg:new FormControl(''),
+        scateg:new FormControl('')
+      })
+
+      get bcateg(){
+        return this.nvCategorie.get('bcateg')?.value
+      }
+      get scateg(){
+        return this.nvCategorie.get('scateg')?.value
+      }
+
+      newCategorie(){
+        let c!:Categorie
+        if(this.bcateg!=null){
+         c=new Categorie(this.scateg,this.bcateg)
+        }else{
+          c=new Categorie(this.scateg)
+
+        }
+
+        this.link.newCategorie(c).subscribe(()=>{
+          this.dialog.closeAll()
+          window.location.reload()
+        })
+      }
 }

@@ -29,9 +29,11 @@ export class FactureComponent implements OnInit {
 
     Facture:any=[]
     LigneCommande:any=[]
+    idClient:number=+localStorage.getItem('id')!
 
     getFacture(){
-      this.store.getFactures().subscribe(res=>{
+
+      this.store.getFactureByClients(this.idClient).subscribe(res=>{
         this.Facture=res;
 
         this.Facture.forEach((facture: { idCommande: any; cmd: Commande; })=>{

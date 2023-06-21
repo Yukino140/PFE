@@ -8,14 +8,7 @@
                 Ref Product
                 <input #ref type="text" class="form-control" (keyup)="filterRef(ref.value)" />
             </th>
-            <th>
-                Status
-                <select class="form-select">
-                  <option >Active</option>
-                  <option>Out of stock</option>
-                  <option >disabled</option>
-              </select>
-            </th>
+
             <th>
                 Categorie
                 <select class="form-select">
@@ -58,6 +51,10 @@
                             <textarea formControlName="desc" class="form-control"></textarea>
                         </mat-form-field><br/>
                         <mat-form-field>
+                            <label>Stock</label>
+                            <input formControlName="stc" class="form-control" />
+                        </mat-form-field><br/>
+                        <mat-form-field>
                             <label>Prix Ancient</label>
                             <input formControlName="prixancient" class="form-control" />
                         </mat-form-field>&nbsp;&nbsp;
@@ -70,12 +67,33 @@
                 </ng-template>
 
             </th>
+            <th>
+                <button class="btn btn-success" mat-button (click)="openAddCategorieDialog()">Add Categorie</button>
+                <ng-template #categorieDialogue>
+                    <h1 style="text-align:center">Ajouter Categorie</h1>
+                    <form [formGroup]="nvCategorie">
+                        <mat-form-field>
+                            <label>Categorie</label>
+                            <select class="form-select" formControlName="bcateg">
+                        <option   *ngFor="let m of Categorie" [value]=m.id  ><i *ngIf="m.idCateg==null">{{m.refCateg}}</i></option>
+                      </select>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <label>Nouveau Categorie</label>
+                            <input formControlName="scateg" class="form-control">
+                        </mat-form-field><br/>
+                    </form>
+                    <button mat-raised-button style="margin-left:40%" (click)="newCategorie()">Add</button>
+
+                </ng-template>
+
+            </th>
         </tr>
     </thead>
     <thead>
         <tr>
             <th>Product</th>
-            <th>Status</th>
+            <th>Nombre du Stock</th>
             <th>Categorie</th>
             <th>Action</th>
 
@@ -84,11 +102,7 @@
     <tbody>
         <tr *ngFor="let row of Produit">
             <td><img [src]="transform(row.image)" style="width:100px;height: 100px;float:left">&nbsp;&nbsp; {{row.nomProd}}</td>
-            <td><select class="form-select">
-                <option >Active</option>
-                <option>Out of stock</option>
-                <option >disabled</option>
-            </select></td>
+            <td>{{row.nbmax}}</td>
             <td>{{row.idCateg}}</td>
             <td>
                 <button class="btn btn-secondary" (click)="openEditProductDialog(row.id)"><mat-icon>edit</mat-icon></button>
@@ -123,6 +137,10 @@
                             <textarea formControlName="desc" class="form-control"></textarea>
                         </mat-form-field><br/>
                         <mat-form-field>
+                            <label>Stock</label>
+                            <input formControlName="stc" class="form-control" />
+                        </mat-form-field><br/>
+                        <mat-form-field>
                             <label>Prix Ancient</label>
                             <input formControlName="prixancient" class="form-control" />
                         </mat-form-field>&nbsp;&nbsp;
@@ -134,10 +152,10 @@
                     </form>
                 </ng-template>
                 &nbsp;
-                <button class="btn btn-danger" (click)="openDeleteProductDialog()"><mat-icon>delete</mat-icon></button>
+                <button class="btn btn-danger" (click)="openDeleteProductDialog(row.id)"><mat-icon>delete</mat-icon></button>
                 <ng-template #deleteproduct>
                     <h2 style="text-align:center">Are you Sure you want to delete this product</h2>
-                    <button class="btn btn-danger" style="margin-left:35%" (click)="deleteProduit(row.id)">YES</button>&nbsp;&nbsp;
+                    <button class="btn btn-danger" style="margin-left:35%" (click)="deleteProduit(k.id)">YES</button>&nbsp;&nbsp;
                     <button class="btn btn-secondary" (click)="closeDialog()">NO</button>
                 </ng-template>
             </td>

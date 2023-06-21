@@ -23,6 +23,12 @@ import { DemandeRetourComponent } from './pages/partie-admin/demande-retour/dema
 import { ListeAdminsComponent } from './pages/partie-admin/liste-admins/liste-admins.component';
 import { InscriEventComponent } from './pages/inscri-event/inscri-event.component';
 import { FormationsComponent } from './pages/partie-admin/formations/formations.component';
+import { NewsletterComponent } from './pages/partie-admin/newsletter/newsletter.component';
+import { MagazinComponent } from './pages/partie-admin/magazin/magazin.component';
+import { ListeReclamationComponent } from './pages/partie-admin/liste-reclamation/liste-reclamation.component';
+import { LivreurComponent } from './pages/partie-admin/livreur/livreur.component';
+import { ListeConfigurateurComponent } from './pages/partie-admin/liste-configurateur/liste-configurateur.component';
+
 
 const routes: Routes = [
 {
@@ -35,7 +41,12 @@ const routes: Routes = [
     {path:"analytics",component:AnalyticsComponent},
     {path:'retour',component:DemandeRetourComponent},
     {path:'listeAdmin',component:ListeAdminsComponent},
-    {path:'formation',component:FormationsComponent}
+    {path:'formation',component:FormationsComponent},
+    {path:'newsletter',component:NewsletterComponent},
+    {path:'magazin',component:MagazinComponent},
+    {path:'reclamation',component:ListeReclamationComponent},
+    {path:'livreur',component:LivreurComponent},
+    {path:'listeConfigurateur',component:ListeConfigurateurComponent},
   ]
 },
 

@@ -8,6 +8,8 @@ export class Produit {
     public description:string,
     public prixAncient:number,
     public prix:number,
+    public show:boolean,
+    public nbmax:number,
     public id?:number
 
     ){}

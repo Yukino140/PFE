@@ -11,5 +11,11 @@ export class AccountComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  nom=localStorage.getItem('nom')
+  adresse=localStorage.getItem('adresse')
+  email=localStorage.getItem('email')
+  telephone=localStorage.getItem('telephone')
+  username=localStorage.getItem('username')
+  matFiscal=localStorage.getItem('matFisc')
 
 }

@@ -42,7 +42,8 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   onAddQuantity(item: CartItem): void {
-    this.cartService.addToCart(item);
+    if(item.quantity<item.qtemax){
+    this.cartService.addToCart(item);}
   }
 
   onRemoveFromCart(item: CartItem): void {

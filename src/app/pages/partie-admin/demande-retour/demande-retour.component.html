@@ -9,6 +9,12 @@
                 <input type="text" class="form-control" />
             </th>
 
+            <th>
+                <p class="text-success">Accepté</p>
+                <p class="text-danger">Refusé</p>
+                <p class="text-warning">en trais d'etudier</p>
+
+            </th>
 
 
 
@@ -26,7 +32,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let i of Retour" [ngClass]="{'bg bg-warning':i.acceptation==null}">
+        <tr *ngFor="let i of Retour" [ngClass]="{'bg bg-warning':i.acceptation==null,'bg bg-danger':i.acceptation==false,'bg bg-success':i.acceptation==true}">
             <td>{{i.client.username}}</td>
             <td>{{i.prd.nomProd}}</td>
             <td>{{i.client.email}}</td>

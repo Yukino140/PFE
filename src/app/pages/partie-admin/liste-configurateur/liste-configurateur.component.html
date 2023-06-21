@@ -1,0 +1,23 @@
+<!-- table.component.html -->
+
+<table class="table my-table">
+
+    <thead>
+        <tr>
+            <th>IDConfig</th>
+
+            <th>Nom </th>
+            <th>Email</th>
+            <th>Produit</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let i of Configurateur ">
+            <td>{{i.idConfig}}</td>
+            <td>{{i.nom}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.prod.nomProd}}</td>
+        </tr>
+    </tbody>
+</table>

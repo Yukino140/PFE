@@ -1,0 +1,68 @@
+<!-- table.component.html -->
+
+<table class="table my-table">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom Magasin</th>
+            <th>Emplacement</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let i of Magazins ">
+
+            <td>{{i.id}}</td>
+            <td>{{i.nomMagasin }}</td>
+            <td>{{i.emplacement}}</td>
+
+            <td>
+                <button class="btn btn-success" (click)="histostock(i.id)">Historique des Stock</button>&nbsp;&nbsp;
+                <ng-template #histoStock>
+                    <h2 style="text-align:center">Historique des Stock </h2>
+                    <table class="table my-table">
+                        <thead>
+                            <tr>
+                                <th>Produit</th>
+                                <th>nb Stock</th>
+                                <th>Date</th>
+
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let i of Stock">
+                                <td>{{i.prod.nomProd}}</td>
+                                <td>{{i.qte}}</td>
+                                <td>{{i.createdAt | date:"dd/MM/yyyy"}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </ng-template>
+                <button class="btn btn-primary" (click)="addStock(i.id)">Ajouter Stock</button>
+                <ng-template #addstock>
+                    <h2 style="text-align:center">Ajouter Stock</h2>
+                    <form [formGroup]="stck">
+                        <mat-form-field>
+                            <label>Produit</label>
+                            <select class="form-select" formControlName="prod">
+                        <option   *ngFor="let m of Produit" [value]=m.id >{{m.nomProd}}</option>
+                      </select>
+                        </mat-form-field><br/>
+                        <mat-form-field>
+                            <label>quantité</label>
+                            <input type="number" min="1" formControlName="qte" class="form-control">
+                        </mat-form-field>
+
+                    </form>
+                    <button class="btn btn-success" (click)="newStock(k[0].id)">Ajouter</button>
+                </ng-template>
+            </td>
+
+        </tr>
+    </tbody>
+</table>

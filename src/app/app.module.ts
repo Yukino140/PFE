@@ -65,6 +65,12 @@ import { ListeAdminsComponent } from './pages/partie-admin/liste-admins/liste-ad
 import { FormsModule } from '@angular/forms';
 import { InscriEventComponent } from './pages/inscri-event/inscri-event.component';
 import { FormationsComponent } from './pages/partie-admin/formations/formations.component';
+import { NewsletterComponent } from './pages/partie-admin/newsletter/newsletter.component';
+import { MagazinComponent } from './pages/partie-admin/magazin/magazin.component';
+import { ListeReclamationComponent } from './pages/partie-admin/liste-reclamation/liste-reclamation.component';
+import { LivreurComponent } from './pages/partie-admin/livreur/livreur.component';
+import { ListeConfigurateurComponent } from './pages/partie-admin/liste-configurateur/liste-configurateur.component';
+
 
 
 
@@ -110,7 +116,12 @@ import { FormationsComponent } from './pages/partie-admin/formations/formations.
     DemandeRetourComponent,
     ListeAdminsComponent,
     InscriEventComponent,
-    FormationsComponent
+    FormationsComponent,
+    NewsletterComponent,
+    MagazinComponent,
+    ListeReclamationComponent,
+    LivreurComponent,
+    ListeConfigurateurComponent
 
 
   ],

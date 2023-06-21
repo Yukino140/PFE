@@ -20,7 +20,10 @@
             <main class="col-lg-6">
                 <article class="ps-lg-3">
                     <!--  <h2>{{categorie?.refCateg}}</h2><br/>-->
-                    <h1 class="title text-dark"><br>{{p.nomProd}} </h1><br/>
+                    <h1 class="title text-dark"><br>{{p.nomProd}} </h1>
+                    <div class="rating">
+                        <mat-icon *ngFor="let i of [1, 2, 3, 4, 5]">star</mat-icon>
+                    </div><br/>
                     <h5>[{{p.refprod}}]</h5>
                     <!-- rating-wrap.// -->
 
@@ -57,4 +60,30 @@
 
     </div>
     <!-- container .//  -->
+
 </section>
+<br>
+<br>
+<br>
+
+<div>
+    <mat-card style="margin-left:10%">
+        <mat-card-title>Add a Comment</mat-card-title>
+        <mat-card-content>
+            <form>
+                <div class="rating">
+                    <mat-icon *ngFor="let i of [1, 2, 3, 4, 5]">star</mat-icon>
+                </div>
+                <mat-form-field>
+                    <textarea matInput placeholder="Comment" required></textarea>
+                </mat-form-field>
+                <button mat-raised-button color="primary" type="submit">Submit</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+
+    </mat-card>
+</div>
+<!--(click)="rateComment(comment, i)" [ngClass]="{'selected': i <= comment.rating}"-->

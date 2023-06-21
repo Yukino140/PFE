@@ -51,7 +51,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let i of Produit" (click)="ajouterProcesseur(i.nomProd)">
+                                <tr *ngFor="let i of Produit" (click)="ajouterProcesseur(i)">
                                     <ng-container *ngIf="i.categorie.refCateg=='Processeur'">
                                         <td><img [src]="i.image" style="width:100px;height: 100px;float:left">&nbsp;&nbsp; {{i.nomProd}}</td>
                                         <td>{{i.refprod}}</td>
@@ -104,8 +104,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let i of Produit" (click)="ajouterRefroidisseur(i.nomProd)">
-                                    <ng-container *ngIf="i.categorie[0].refCateg=='Refroidisseur'">
+                                <tr *ngFor="let i of Produit" (click)="ajouterRefroidisseur(i)">
+                                    <ng-container *ngIf="i.categorie.refCateg=='Refroidisseur'">
                                         <td><img [src]="i.image" style="width:100px;height: 100px;float:left">&nbsp;&nbsp; {{i.nomProd}}</td>
                                         <td>{{i.refprod}}</td>
 
@@ -155,8 +155,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let i of Produit" (click)="ajouterCarteMere(i.nomProd)">
-                                    <ng-container *ngIf="i.categorie[0].refCateg=='Carte Mére'">
+                                <tr *ngFor="let i of Produit" (click)="ajouterCarteMere(i)">
+                                    <ng-container *ngIf="i.categorie.refCateg=='Carte Mére'">
                                         <td><img [src]="i.image" style="width:100px;height: 100px;float:left">&nbsp;&nbsp; {{i.nomProd}}</td>
                                         <td>{{i.refprod}}</td>
 
@@ -207,8 +207,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let i of Produit" (click)="ajouterMemoireVive(i.nomProd)">
-                                    <ng-container *ngIf="i.categorie[0].refCateg=='Memoire Vive'">
+                                <tr *ngFor="let i of Produit" (click)="ajouterMemoireVive(i)">
+                                    <ng-container *ngIf="i.categorie.refCateg=='Memoire Vive'">
                                         <td><img [src]="i.image" style="width:100px;height: 100px;float:left">&nbsp;&nbsp; {{i.nomProd}}</td>
                                         <td>{{i.refprod}}</td>
 
@@ -259,8 +259,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let i of Produit" (click)="ajouterCarteGraphique(i.nomProd)">
-                                    <ng-container *ngIf="i.categorie[0].refCateg=='Carte Graphique'">
+                                <tr *ngFor="let i of Produit" (click)="ajouterCarteGraphique(i)">
+                                    <ng-container *ngIf="i.categorie.refCateg=='Carte Graphique'">
                                         <td><img [src]="i.image" style="width:100px;height: 100px;float:left">&nbsp;&nbsp; {{i.nomProd}}</td>
                                         <td>{{i.refprod}}</td>
 
@@ -307,8 +307,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let i of Produit" (click)="ajouterDisqueDur(i.nomProd)">
-                                    <ng-container *ngIf="i.categorie[0].refCateg=='Disque Dur'">
+                                <tr *ngFor="let i of Produit" (click)="ajouterDisqueDur(i)">
+                                    <ng-container *ngIf="i.categorie.refCateg=='Disque Dur'">
                                         <td><img [src]="i.image" style="width:100px;height: 100px;float:left">&nbsp;&nbsp; {{i.nomProd}}</td>
                                         <td>{{i.refprod}}</td>
 
@@ -353,8 +353,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let i of Produit" (click)="ajouterSSD(i.nomProd)">
-                                    <ng-container *ngIf="i.categorie[0].refCateg=='SSD'">
+                                <tr *ngFor="let i of Produit" (click)="ajouterSSD(i)">
+                                    <ng-container *ngIf="i.categorie.refCateg=='SSD'">
                                         <td><img [src]="i.image" style="width:100px;height: 100px;float:left">&nbsp;&nbsp; {{i.nomProd}}</td>
                                         <td>{{i.refprod}}</td>
 
@@ -401,8 +401,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let i of Produit" (click)="ajouterBoitier(i.nomProd)">
-                                    <ng-container *ngIf="i.categorie[0].refCateg=='Boitier'">
+                                <tr *ngFor="let i of Produit" (click)="ajouterBoitier(i)">
+                                    <ng-container *ngIf="i.categorie.refCateg=='Boitier'">
                                         <td><img [src]="i.image" style="width:100px;height: 100px;float:left">&nbsp;&nbsp; {{i.nomProd}}</td>
                                         <td>{{i.refprod}}</td>
 
@@ -448,8 +448,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let i of Produit" (click)="ajouterAlimentation(i.nomProd)">
-                                    <ng-container *ngIf="i.categorie[0].refCateg=='Alimentation'">
+                                <tr *ngFor="let i of Produit" (click)="ajouterAlimentation(i)">
+                                    <ng-container *ngIf="i.categorie.refCateg=='Alimentation'">
                                         <td><img [src]="i.image" style="width:100px;height: 100px;float:left">&nbsp;&nbsp; {{i.nomProd}}</td>
                                         <td>{{i.refprod}}</td>
 
@@ -497,8 +497,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let i of Produit" (click)="ajouterWifi(i.nomProd)">
-                                    <ng-container *ngIf="i.categorie[0].refCateg=='WIFI PCI EX - CASE FANS'">
+                                <tr *ngFor="let i of Produit" (click)="ajouterWifi(i)">
+                                    <ng-container *ngIf="i.categorie.refCateg=='WIFI PCI EX - CASE FANS'">
                                         <td><img [src]="i.image" style="width:100px;height: 100px;float:left">&nbsp;&nbsp; {{i.nomProd}}</td>
                                         <td>{{i.refprod}}</td>
 
@@ -544,8 +544,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let i of Produit " (click)="ajouterPateThermique(i.nomProd) ">
-                                    <ng-container *ngIf="i.categorie[0].refCateg=='Pate Thermique' ">
+                                <tr *ngFor="let i of Produit " (click)="ajouterPateThermique(i) ">
+                                    <ng-container *ngIf="i.categorie.refCateg=='Pate Thermique' ">
                                         <td><img [src]="i.image " style="width:100px;height: 100px;float:left ">&nbsp;&nbsp; {{i.nomProd}}</td>
                                         <td>{{i.refprod}}</td>
 
@@ -583,13 +583,14 @@
                         <div><strong>Total:0 DT HT</strong></div>
                         <th style="border:1px solid #3F51B5;width:80%;margin-top:10px ;background-color: #3F51B5;color:white; ">VALIDER VOTRE CONFIGURATION
                         </th>
-                        <form style="margin-bottom:5px">
-                            <input type="text " class="form-control " placeholder="Nom* " />
-                            <input type="text " class="form-control " placeholder="Prenom* " />
-                            <input type="text " class="form-control " placeholder="Téléphone* " />
-                            <input type="text " class="form-control " placeholder="Email* " />
-                            <button class="btn btn-primary ;">Valider</button>
+                        <form style="margin-bottom:5px" [formGroup]="validation">
+                            <input type="text " class="form-control " placeholder="Nom* " formControlName="nom" />
+                            <input type="text " class="form-control " placeholder="Prenom* " formControlName="prenom" />
+                            <input type="text " class="form-control " placeholder="Téléphone* " formControlName="telephone" />
+                            <input type="text " class="form-control " placeholder="Email* " formControlName="email" /> />
+
                         </form>
+                        <button class="btn btn-primary ;" (click)="valider()">Valider</button>
                     </div>
 
                 </div>

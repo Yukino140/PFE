@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
+import { Comments } from 'src/app/models/comments';
 import { Product } from 'src/app/models/product.model';
 import { Produit } from 'src/app/models/produit';
 import { StoreService } from 'src/app/services/store.service';
@@ -27,6 +28,10 @@ export class ProductComponent implements OnInit {
 
      }
 
+
+     rateComment(comment: Comments, rating: number) {
+      comment.rating = rating;
+    }
   }
 
 

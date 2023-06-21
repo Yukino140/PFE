@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Reclamation } from 'src/app/models/reclamation';
 import { Message, StoreService } from 'src/app/services/store.service';
 
 
@@ -30,8 +31,16 @@ setMessage(s:String){
       msg.issuer = "USER"
       this.messages.push(msg);
       this.link.chat(msg).subscribe((res) => {
+        let k:any=res
         console.log(res);
         this.messages.push(res);
+        console.log(res)
+        if(k.intention=="Reclamation"){
+          let r:Reclamation=new Reclamation(msg.message)
+          this.link.nouveauReclamation(r).subscribe(()=>{
+            alert('success')
+          })
+        }
       })
       this.setMessage('')
     }

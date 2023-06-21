@@ -1,0 +1,39 @@
+<!-- table.component.html -->
+
+<table class="table my-table">
+    <thead>
+        <tr>
+
+
+
+
+
+        </tr>
+    </thead>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let i of NewsLetter">
+            <td>{{i.id}}</td>
+            <td>{{i.email}}</td>
+            <td><button (click)="open(i.id)">Send Mail</button></td>
+            <ng-template #config>
+                <div>
+                    <form [formGroup]="inp" enctype="multipart/form-data">
+                        <textarea class="form-control" formControlName="atta"></textarea>
+                        <button class="btn btn-success" (click)="sendmail(k[0].id)">
+                    Send
+                   </button>
+                    </form>
+                </div>
+            </ng-template>
+        </tr>
+    </tbody>
+</table>

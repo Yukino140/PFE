@@ -56,9 +56,9 @@
                     <button mat-button color="primary" (click)="stepper.previous()">Previous</button>
                     <button mat-button color="accent" (click)="submitForm()">Submit</button>
                 </div> -->
-                <button [hidden]="true" (click)="makePayement()"><img src="../../../assets/Credit.jpeg"  style="width:300px;margin-left:225px;"/></button>
-                <button [hidden]="true"><img src="../../../assets/PayPal.png" style="width:300px;margin-left:225px;height:40px;"/></button>
-                <button [hidden]="true" (click)="payCrypto()"><img src="../../../assets/crypto.png" style="width:300px;margin-left:225px;height:40px;"/></button>
+                <button (click)="makePayement()"><img src="../../../assets/Credit.jpeg"  style="width:300px;margin-left:225px;"/></button>
+                <button><img src="../../../assets/PayPal.png" style="width:300px;margin-left:225px;height:40px;"/></button>
+                <button (click)="payCrypto()"><img src="../../../assets/crypto.png" style="width:300px;margin-left:225px;height:40px;"/></button>
                 <!--  <ngx-paypal [config]="payPalConfig"></ngx-paypal>-->
 
             </form>

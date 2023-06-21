@@ -33,6 +33,7 @@ export class CheckOutComponent implements OnInit {
   paymentHandler:any = null
   total!:number
 
+  idClient:number=+localStorage.getItem('id')!
 
     @ViewChild('success') success!:TemplateRef<any>
 
@@ -40,13 +41,13 @@ export class CheckOutComponent implements OnInit {
    newCommande(k:string){
     console.log(this.total)
     const items = JSON.parse(localStorage.getItem('cart')!);
-    let c:Commande=new Commande(this.fullname,this.addresse+" "+this.city,this.postalcode,"",k,this.total,true,"",1)
+    let c:Commande=new Commande(this.fullname,this.addresse+" "+this.city,this.postalcode,"",k,this.total,true,"en trains d'etudier",this.idClient)
 
     console.log(c)
     this.link.addCommande(c).subscribe((data:any)=>{
       let m:any=data;
       let ttc=this.total+this.total*0.025
-      let f:Facture=new Facture(m.id,this.total,2.5,ttc);
+      let f:Facture=new Facture(m.id,this.total,2.5,ttc,this.idClient);
      this.link.nouveauFacture(f).subscribe()
       console.log(data);
      items.forEach((item: {

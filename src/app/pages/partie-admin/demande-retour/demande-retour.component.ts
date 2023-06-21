@@ -25,7 +25,7 @@ export class DemandeRetourComponent {
       prd: Produit; idcommande: any; commande: LigneCommande;
 })=>{
       let foreignKey = r.idcommande
-      this.store.getLigneCommandeByid(foreignKey).subscribe((data)=>{
+      this.store.getOneLigneCommandeByid(foreignKey).subscribe((data)=>{
         r.commande = data;
         let lg:any=data
         lg.forEach((ligne: { idprod: any; prd: Produit; })=>{

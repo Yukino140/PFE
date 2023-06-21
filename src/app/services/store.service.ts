@@ -12,6 +12,11 @@ import { Credentials } from '../models/credentials';
 import { Retour } from '../models/retour';
 import { Formation } from '../models/formation';
 import { Inscription } from '../models/inscription';
+import { NewsLetter } from '../models/news-letter';
+import { Stock } from '../models/stock';
+import { Reclamation } from '../models/reclamation';
+import { Configurateur } from '../models/configurateur';
+import { Livreur } from '../models/livreur';
 
 const STORE_BASE_URL = 'http://localhost:3001';
 const chatbotAPI ='http://127.0.0.1:5000/'
@@ -61,6 +66,9 @@ export class StoreService {
   getCategorieById(id: number):Observable<Categorie>{
     return this.httpClient.get<Categorie>(STORE_BASE_URL+'/categorie/'+id)
   }
+  newCategorie(c:Categorie){
+    return this.httpClient.post(STORE_BASE_URL+'/categorie/add',c)
+  }
 
   getAllCommandeForClient(id:any):Observable<Commande>{
     return this.httpClient.get<Commande>(STORE_BASE_URL+'/commande/getAllOneClient/'+id)
@@ -76,6 +84,9 @@ export class StoreService {
   }
   getLigneCommandeByid(id:number):Observable<LigneCommande>{
     return this.httpClient.get<LigneCommande>(STORE_BASE_URL+'/ligneCommande/getAllLigneCommandebyId/'+id)
+  }
+  getOneLigneCommandeByid(id:number):Observable<LigneCommande>{
+    return this.httpClient.get<LigneCommande>(STORE_BASE_URL+'/ligneCommande/getOne/'+id)
   }
 
   getFactures():Observable<Facture>{
@@ -170,6 +181,52 @@ export class StoreService {
   getAllinscriByEvent(id:number){
     return this.httpClient.get(STORE_BASE_URL+'/inscriEvent/getByEvent/'+id)
   }
+  addNewsLetter(n:NewsLetter){
+    return this.httpClient.post(STORE_BASE_URL+'/newsletter/nouveauNewsLetter',n)
+  }
+  getAllNewsLetter(){
+    return this.httpClient.get(STORE_BASE_URL+'/newsletter/getAllNews')
+  }
+  getOneNews(id:number){
+    return this.httpClient.get(STORE_BASE_URL+'/newsletter/getOne/'+id)
+  }
+  getstockbyMagazin(id:number){
+    return this.httpClient.get(STORE_BASE_URL+'/stock/bymagazin/'+id)
+
+  }
+  addstock(s:Stock){
+    return this.httpClient.post(STORE_BASE_URL+'/stock/addStock',s)
+  }
+  getOneMagazin(id:number){
+    return this.httpClient.get(STORE_BASE_URL+'/magasin/getOne/'+id)
+  }
+  nouveauReclamation(rec:Reclamation){
+    return this.httpClient.post(STORE_BASE_URL+'/reclamation/newReclamation',rec)
+  }
+  getAllReclamations(){
+    return this.httpClient.get(STORE_BASE_URL+'/reclamation/getAll')
+  }
+  addConfigurateur(c:Configurateur){
+    return this.httpClient.post(STORE_BASE_URL+'/configurateur/new',c)
+  }
+  getAllConfigurateur(){
+    return this.httpClient.get(STORE_BASE_URL+'/configurateur/getAll')
+  }
+  getConfigByIdConfig(id:number){
+    return this.httpClient.get(STORE_BASE_URL+'/configurateur/getbyConfig/'+id)
+  }
+  getConfiById(id:number){
+    return this.httpClient.get(STORE_BASE_URL+'/configurateur/getOne/'+id)
+  }
+  addLivreur(l:Livreur){
+    return this.httpClient.post(STORE_BASE_URL+'/livreur/addLivreur',l)
+  }
+  getAllLivreur(){
+    return this.httpClient.get(STORE_BASE_URL+'/livreur/getAllLivreur')
+  }
+  getFactureByClients(id:number){
+    return this.httpClient.get(STORE_BASE_URL+'/facture/getByClient/'+id)
+  }
 }
 
 
@@ -178,6 +235,8 @@ export class Message {
   message! : string
 
   issuer! : string
+
+  intention!: string
 
   constructor(){}
 

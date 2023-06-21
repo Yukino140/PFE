@@ -1,6 +1,8 @@
 import { Component, ElementRef, TemplateRef, ViewChild } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Categorie } from 'src/app/models/categorie';
+import { Configurateur } from 'src/app/models/configurateur';
 import { Produit } from 'src/app/models/produit';
 import { StoreService } from 'src/app/services/store.service';
 
@@ -147,8 +149,8 @@ export class ConfigurateurComponent {
   verifPT:Boolean = true
 
 
-
-  ajouterProcesseur(s:string) {
+item:any=[]
+  ajouterProcesseur(s:Produit) {
     // Accéder à la référence
     const element = this.elementAjoute.nativeElement;
     const elem = this.ea.nativeElement;
@@ -158,16 +160,17 @@ export class ConfigurateurComponent {
 
     // Exemple d'ajout d'un élément après le clic
     const nouvelElement = document.createElement('div');
-    nouvelElement.textContent = s;
+    nouvelElement.textContent = s.nomProd;
     const elemnetfinal = document.createElement('div');
-    elemnetfinal.textContent = s;
+    elemnetfinal.textContent = s.nomProd;
     element.appendChild(nouvelElement);
     elem.appendChild(elemnetfinal);
     this.verif=false
     this.close()
-
+    this.item.push(s)
+    console.log(this.item)
   }
-  ajouterRefroidisseur(s:string) {
+  ajouterRefroidisseur(s:Produit) {
     // Accéder à la référence
     const element = this.refroiAjouter.nativeElement;
     const elem = this.refroisisseurAjouter.nativeElement;
@@ -177,17 +180,19 @@ export class ConfigurateurComponent {
 
     // Exemple d'ajout d'un élément après le clic
     const nouvelElement = document.createElement('div');
-    nouvelElement.textContent = s;
+    nouvelElement.textContent = s.nomProd;
     const elemnetfinal = document.createElement('div');
-    elemnetfinal.textContent = s;
+    elemnetfinal.textContent = s.nomProd;
     element.appendChild(nouvelElement);
     elem.appendChild(elemnetfinal);
     this.verifr=false
     this.close()
+    this.item.push(s)
+    console.log(this.item)
 
   }
 
-  ajouterCarteMere(s:string) {
+  ajouterCarteMere(s:Produit) {
     // Accéder à la référence
     const element = this.carteMAjouter.nativeElement;
     const elem = this.carteMereAjouter.nativeElement;
@@ -197,17 +202,18 @@ export class ConfigurateurComponent {
 
     // Exemple d'ajout d'un élément après le clic
     const nouvelElement = document.createElement('div');
-    nouvelElement.textContent = s;
+    nouvelElement.textContent = s.nomProd;
     const elemnetfinal = document.createElement('div');
-    elemnetfinal.textContent = s;
+    elemnetfinal.textContent = s.nomProd;
     element.appendChild(nouvelElement);
     elem.appendChild(elemnetfinal);
     this.verifM=false
     this.close()
+    this.item.push(s)
 
   }
 
-  ajouterMemoireVive(s:string) {
+  ajouterMemoireVive(s:Produit) {
     // Accéder à la référence
     const element = this.memoireVAjouter.nativeElement;
     const elem = this.memoireViveAjouter.nativeElement;
@@ -217,17 +223,18 @@ export class ConfigurateurComponent {
 
     // Exemple d'ajout d'un élément après le clic
     const nouvelElement = document.createElement('div');
-    nouvelElement.textContent = s;
+    nouvelElement.textContent = s.nomProd;
     const elemnetfinal = document.createElement('div');
-    elemnetfinal.textContent = s;
+    elemnetfinal.textContent = s.nomProd;
     element.appendChild(nouvelElement);
     elem.appendChild(elemnetfinal);
     this.verifMV=false
     this.close()
+    this.item.push(s)
 
   }
 
-  ajouterCarteGraphique(s:string) {
+  ajouterCarteGraphique(s:Produit) {
     // Accéder à la référence
     const element = this.carteGAjouter.nativeElement;
     const elem = this.carteGraphiqueAjouter.nativeElement;
@@ -237,17 +244,18 @@ export class ConfigurateurComponent {
 
     // Exemple d'ajout d'un élément après le clic
     const nouvelElement = document.createElement('div');
-    nouvelElement.textContent = s;
+    nouvelElement.textContent = s.nomProd;
     const elemnetfinal = document.createElement('div');
-    elemnetfinal.textContent = s;
+    elemnetfinal.textContent = s.nomProd;
     element.appendChild(nouvelElement);
     elem.appendChild(elemnetfinal);
     this.verifCG=false
     this.close()
+    this.item.push(s)
 
   }
 
-  ajouterDisqueDur(s:string) {
+  ajouterDisqueDur(s:Produit) {
     // Accéder à la référence
     const element = this.disqueDAjouter.nativeElement;
     const elem = this.disqueDurAjouter.nativeElement;
@@ -257,17 +265,17 @@ export class ConfigurateurComponent {
 
     // Exemple d'ajout d'un élément après le clic
     const nouvelElement = document.createElement('div');
-    nouvelElement.textContent = s;
+    nouvelElement.textContent = s.nomProd;
     const elemnetfinal = document.createElement('div');
-    elemnetfinal.textContent = s;
+    elemnetfinal.textContent = s.nomProd;
     element.appendChild(nouvelElement);
     elem.appendChild(elemnetfinal);
     this.verifDD=false
     this.close()
-
+    this.item.push(s)
   }
 
-  ajouterSSD(s:string) {
+  ajouterSSD(s:Produit) {
     // Accéder à la référence
     const element = this.sAjouter.nativeElement;
     const elem = this.ssdAjouter.nativeElement;
@@ -277,17 +285,18 @@ export class ConfigurateurComponent {
 
     // Exemple d'ajout d'un élément après le clic
     const nouvelElement = document.createElement('div');
-    nouvelElement.textContent = s;
+    nouvelElement.textContent = s.nomProd;
     const elemnetfinal = document.createElement('div');
-    elemnetfinal.textContent = s;
+    elemnetfinal.textContent = s.nomProd;
     element.appendChild(nouvelElement);
     elem.appendChild(elemnetfinal);
     this.verifSS=false
     this.close()
+    this.item.push(s)
 
   }
 
-  ajouterBoitier(s:string) {
+  ajouterBoitier(s:Produit) {
     // Accéder à la référence
     const element = this.boiteAjouter.nativeElement;
     const elem = this.boiterAjouter.nativeElement;
@@ -297,17 +306,18 @@ export class ConfigurateurComponent {
 
     // Exemple d'ajout d'un élément après le clic
     const nouvelElement = document.createElement('div');
-    nouvelElement.textContent = s;
+    nouvelElement.textContent = s.nomProd;
     const elemnetfinal = document.createElement('div');
-    elemnetfinal.textContent = s;
+    elemnetfinal.textContent = s.nomProd;
     element.appendChild(nouvelElement);
     elem.appendChild(elemnetfinal);
     this.verifb=false
     this.close()
+    this.item.push(s)
 
   }
 
-  ajouterAlimentation(s:string) {
+  ajouterAlimentation(s:Produit) {
     // Accéder à la référence
     const element = this.alimenAjouter.nativeElement;
     const elem = this.alimentationAjouter.nativeElement;
@@ -317,17 +327,18 @@ export class ConfigurateurComponent {
 
     // Exemple d'ajout d'un élément après le clic
     const nouvelElement = document.createElement('div');
-    nouvelElement.textContent = s;
+    nouvelElement.textContent = s.nomProd;
     const elemnetfinal = document.createElement('div');
-    elemnetfinal.textContent = s;
+    elemnetfinal.textContent = s.nomProd;
     element.appendChild(nouvelElement);
     elem.appendChild(elemnetfinal);
     this.verifAL=false
     this.close()
+    this.item.push(s)
 
   }
 
-  ajouterWifi(s:string) {
+  ajouterWifi(s:Produit) {
     // Accéder à la référence
     const element = this.wiAjouter.nativeElement;
     const elem = this.wifiAjouter.nativeElement;
@@ -337,17 +348,19 @@ export class ConfigurateurComponent {
 
     // Exemple d'ajout d'un élément après le clic
     const nouvelElement = document.createElement('div');
-    nouvelElement.textContent = s;
+    nouvelElement.textContent = s.nomProd;
     const elemnetfinal = document.createElement('div');
-    elemnetfinal.textContent = s;
+    elemnetfinal.textContent = s.nomProd;
     element.appendChild(nouvelElement);
     elem.appendChild(elemnetfinal);
     this.verifW=false
     this.close()
+    this.item.push(s)
+
 
   }
 
-  ajouterPateThermique(s:string) {
+  ajouterPateThermique(s:Produit) {
     // Accéder à la référence
     const element = this.pateAjouter.nativeElement;
     const elem = this.pateTAjouter.nativeElement;
@@ -357,13 +370,42 @@ export class ConfigurateurComponent {
 
     // Exemple d'ajout d'un élément après le clic
     const nouvelElement = document.createElement('div');
-    nouvelElement.textContent = s;
+    nouvelElement.textContent = s.nomProd;
     const elemnetfinal = document.createElement('div');
-    elemnetfinal.textContent = s;
+    elemnetfinal.textContent = s.nomProd;
     element.appendChild(nouvelElement);
     elem.appendChild(elemnetfinal);
     this.verifPT=false
     this.close()
+    this.item.push(s)
 
+  }
+  validation:FormGroup=new FormGroup({
+    nom:new FormControl(''),
+    prenom:new FormControl(''),
+    telephone:new FormControl(''),
+    email:new FormControl(''),
+  })
+  get nom(){
+    return this.validation.get('nom')?.value
+  }
+  get prenom(){
+    return this.validation.get('prenom')?.value
+  }
+  get telephone(){
+    return this.validation.get('telephone')?.value
+  }
+  get email(){
+    return this.validation.get('email')?.value
+  }
+  valider(){
+    let k=Math.floor(Math.random() * 1000000)
+    this.item.forEach((s: { id: number; })=>{
+
+      let c:Configurateur=new Configurateur(this.nom,this.prenom,this.telephone,this.email,k,s.id)
+      this.store.addConfigurateur(c).subscribe(()=>{
+        alert("success")
+      })
+    })
   }
 }
